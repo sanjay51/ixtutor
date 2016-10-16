@@ -1,0 +1,72 @@
+<div *ngIf="course">
+    <button (click)="showDiff()" class="btn">Show diff</button>
+    <button (click)="saveSection()" class="btn btn-success">Save</button>
+    <h2>Edit section: "{{section.title}}"</h2>
+    <div class="form-group">
+        <label>Title</label>
+        <input [(ngModel)]="section.title" type="text" class="form-control" name="name" required />
+    </div>
+
+    <div class="form-group">
+        <label>Instruction Text</label>
+        <textarea [(ngModel)]="section.instruction.text" class="form-control" name="instructionText"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Valid Inputs</label><br/>
+        <div *ngFor="let validInput of section.validInputs; let i = index;">
+            <!-- I have to use index 'i' instead of 'validInput' for ngModel,
+        as native type (string) doesn't appear to be working with ngModel -->
+            <textarea [(ngModel)]="section.validInputs[i]" class="form-control" placeholder="Default input here"></textarea><br/>
+        </div>
+        <a (click)="addValidInput()" class="btn btn-info btn-sm">
+            <span class="glyphicon glyphicon-plus-sign"></span> add Input
+        </a>
+    </div>
+
+    <div class="form-group">
+        <label>Input Field Placeholder</label>
+        <input [(ngModel)]="section.inputPlaceholder" class="form-control" name="placeholderText" />
+    </div>
+
+    <div class="form-group">
+        <label>Success Output</label>
+        <textarea [(ngModel)]="section.output.text" class="form-control" name="outputText"></textarea>
+    </div>
+
+    <div class="form-group">
+        <h3>Policy</h3>
+        <div *ngFor="let statement of section.policy.statements; let stIndex = index" class="panel panel-primary">
+            <div class="panel-heading">Statement {{stIndex + 1}}: "{{statement.description}}"</div>
+            <div class="panel-body">
+                <div class="input-group">
+                    <label>Description</label>
+                    <input [(ngModel)]="statement.description" type="text" class="form-control" name="name" required />
+                </div><br/>
+                <div *ngFor="let condition of statement.conditions; let conditionIndex = index" class="panel panel-default">
+                    <div class="panel-heading">Condition {{conditionIndex + 1}}</div>
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">inputIdeal.</span>
+                            <input [(ngModel)]="condition.lhs" type="text" class="form-control" aria-describedby="basic-addon1" />
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">operator</span>
+                            <input [(ngModel)]="condition.operator" type="text" class="form-control" aria-describedby="basic-addon1" />
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1">inputReal.</span>
+                            <input [(ngModel)]="condition.rhs" type="text" class="form-control" aria-describedby="basic-addon1" />
+                        </div>
+                    </div>
+                </div>
+                <a (click)="addStatementCondition(statement)" class="btn btn-info btn-sm">
+                    <span class="glyphicon glyphicon-plus-sign"></span> add condition
+                </a><br/><br/>
+            </div>
+        </div>
+        <a (click)="addPolicyStatement()" class="btn btn-info btn-sm">
+            <span class="glyphicon glyphicon-plus-sign"></span> add policy statement
+        </a><br/><br/>
+    </div>
+</div>

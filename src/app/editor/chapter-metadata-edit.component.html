@@ -1,0 +1,29 @@
+<div *ngIf="chapterMeta">
+    <button (click)="showDiff()" class="btn">Show diff</button>
+    <button (click)="save()" class="btn btn-success">Save</button>
+    <h2>Edit chapter metadata: "{{chapterMeta.title}}"</h2>
+    <div class="form-group">
+        <label>Title</label>
+        <input [(ngModel)]="chapterMeta.title" type="text" class="form-control" name="name" required />
+    </div>
+
+    <div class="form-group">
+        <label>Begin chapter index</label>
+        <input [(ngModel)]="chapterMeta.beginSectionIndex" class="form-control" name="beginSectionIndex" />
+    </div>
+
+    <div class="form-group">
+        <label class="label-chapter">Sections</label>
+        <div *ngFor="let section of chapter.sections" class="panel panel-primary">
+            <div class="panel-heading">
+                Section {{section.id + 1}}: {{section.title}}
+            </div>
+            <div class="panel-body">
+                <a (click)="loadSectionEditor(section)">Edit this section</a>
+            </div>
+        </div>
+        <a (click)="addSection()" class="btn btn-info btn-sm">
+            <span class="glyphicon glyphicon-plus-sign"></span> add another section
+        </a><br/>
+    </div>
+</div>

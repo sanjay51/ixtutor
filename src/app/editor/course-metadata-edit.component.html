@@ -1,0 +1,49 @@
+<div *ngIf="course">
+    <button (click)="showDiff()" class="btn">Show diff</button>
+    <button (click)="save()" class="btn btn-success">Save</button>
+    <h2>Edit course metadata: "{{course.meta.title}}"</h2>
+    <div class="form-group">
+        <label>Title</label>
+        <input [(ngModel)]="meta.title" type="text" class="form-control" name="name" required />
+    </div>
+
+    <div class="form-group">
+        <label>Name</label>
+        <input [(ngModel)]="meta.name" type="text" class="form-control" name="name" required />
+    </div>
+
+    <div class="form-group">
+        <label>Category</label>
+        <input [(ngModel)]="meta.category" class="form-control" name="instructionText" />
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <textarea [(ngModel)]="meta.description" class="form-control" placeholder="Default input here" name="inputIdeal"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Author</label>
+        <input [(ngModel)]="meta.author" class="form-control" name="outputText" />
+    </div>
+
+    <div class="form-group">
+        <label>Begin chapter index</label>
+        <input [(ngModel)]="meta.beginChapterIndex" class="form-control" name="outputText" />
+    </div>
+
+    <div class="form-group">
+        <label class="label-chapter">Chapters</label>
+        <a (click)="addChapter()" class="btn btn-info btn-md">
+          <span class="glyphicon glyphicon-plus-sign"></span> Add chapter
+        </a><br/><br/>
+        <div *ngFor="let chapter of course.chapters" class="panel panel-primary">
+            <div class="panel-heading">
+                Chapter {{chapter.id + 1}}: {{chapter.meta.title}}
+            </div>
+            <div class="panel-body">
+                <a (click)="loadChapterMetadataEditor(chapter)">Edit this chapter</a>
+            </div>
+        </div>
+    </div>
+</div>

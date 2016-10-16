@@ -1,0 +1,10 @@
+textarea {
+    padding: 1em;   /* space on all directions */
+    font-family: "Montserrat", "sans-serif";
+    font-size: 1em;
+    width: 100%;
+    font-family: ‘Lucida Console’, Monaco, monospace;
+    height: 100%;
+    border: none;
+    outline: none;
+ }

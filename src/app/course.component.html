@@ -1,0 +1,49 @@
+<div *ngIf="course" class="secondary-header">
+
+    <!-- course dropdown -->
+    <div class="btn-group" dropdown>
+        <button id="course-dropdown-button" type="button" class="btn btn-custom" dropdownToggle [disabled]="disabled">
+            <strong>Chapter |</strong> {{chapter.meta.title}} <span class="caret"></span>
+        </button>
+        <ul style="background-color: #2F4F4F" dropdownMenu role="menu" aria-labelledby="course-dropdown-button">
+            <li *ngFor="let chapter of course.chapters" role="menuitem"><a (click)="loadChapter(chapter)" class="dropdown-item dropdown-item-text">{{chapter.meta.title}}</a></li>
+        </ul>
+    </div>
+
+    <!-- section dropdown -->
+    <div class="btn-group" dropdown>
+        <button id="section-dropdown-button" type="button" class="btn btn-custom" dropdownToggle [disabled]="disabled">
+            <strong>Section |</strong> {{section.title}} <span class="caret"></span>
+        </button>
+        <ul style="background-color: #2F4F4F" dropdownMenu role="menu" aria-labelledby="section-dropdown-button">
+            <li *ngFor="let section of chapter.sections" role="menuitem"><a (click)="loadSection(section)" class="dropdown-item dropdown-item-text">{{section.title}}</a></li>
+        </ul>
+    </div>
+</div>
+
+<div *ngIf="course" class="container course-container">
+    <div class="row">
+        <div class="col-md-4 instruction-panel">
+            <span class="label label-default">Instructions</span>
+            <div>
+                <pre class="instructions">{{section.instruction.text}}</pre>
+            </div>
+        </div>
+        <div class="col-md-8 input-container">
+            <div class="row input">
+                <span class="label label-default">Input</span>
+                <div>
+                    <textarea [(ngModel)]="userInput" class="form-control input-textarea" placeholder="Your input here.."></textarea>
+                </div>
+            </div>
+            <button (click)="evaluate()" class="btn btn-warning">Evaluate</button>
+            <div class="row output-container">
+                <span class="label label-default">Output</span>
+                <div>
+                    <pre class="output-pre">{{output}}</pre>
+                </div>
+                <button *ngIf="isCompleted" (click)="gotoNextSection()" class="btn btn-success" style="margin:5px">Next</button>
+            </div>
+        </div>
+    </div>
+</div>

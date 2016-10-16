@@ -1,0 +1,34 @@
+<div class="container" style="width: 100%; height: 100%; background-color:grey">
+    <div class="row">
+
+        <div class="col-md-4 well" style="min-height: 100%">
+            <h3>Course</h3>
+            <h5 *ngIf="course">{{course.meta.title}}</h5>
+            <div id="xyz" *ngIf="course" class="well">
+                <!-- chapter list -->
+                <ul>
+                    <li><a (click)="loadCourseMetadataEditor()">edit course</a></li>
+                    <li>chapters
+                        <ul *ngFor="let chapter of course.chapters">
+                            <li>{{chapter.id + 1}}. "{{chapter.meta.title}}"
+                                <ul>
+                                    <li><a (click)="loadChapterMetadataEditor(chapter)">edit chapter</a></li>
+                                    <li>sections
+                                        <ul *ngFor="let section of chapter.sections; let sIndex = index">
+                                            <li><a (click)="loadSectionEditor(chapter, section)" >{{sIndex+1}}. "{{section.title}}"</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-8" style="background-color: white; height: 100%">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
