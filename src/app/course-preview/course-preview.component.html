@@ -1,0 +1,9 @@
+<div class="container" *ngIf="course">
+	<div class="content">
+		<img src="app/images/haskell.png" /><br/>
+		<label>{{course.meta.title}}</label><br/><br/>
+		<label>Author: {{course.meta.author}}</label><br/><br/>
+
+		<button class="btn btn-success" (click)="gotoCourse()">Begin course</button>
+	</div>
+</div>

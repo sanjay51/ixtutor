@@ -23,6 +23,7 @@ import { CoursesService } from './courses.service';
 import { RuleEvaluatorService } from './rule-evaluator.service';
 import { AuthenticationService } from './authentication.service';
 import { LoginGuard } from './login-guard.service';
+import { CoursePreviewComponent } from './course-preview/course-preview.component';
 
 @NgModule({
     imports: [
@@ -42,7 +43,8 @@ import { LoginGuard } from './login-guard.service';
         EditorComponent,
         SectionEditComponent,
         CourseMetadataEditComponent,
-        ChapterMetadataEditComponent
+        ChapterMetadataEditComponent,
+        CoursePreviewComponent
     ],
     bootstrap: [AppComponent],
     providers: [CoursesService, RuleEvaluatorService, 

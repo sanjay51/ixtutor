@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     }
 
     loadCourse(course: Course) {
-        let link = ['/course', course.id, 'chapter', 0, 'section', 0];
+        let link = ['/course', course.id];
         this.router.navigate(link);
     }
 

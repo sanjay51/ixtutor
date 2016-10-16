@@ -8,6 +8,7 @@ import { EditorComponent } from './editor.component';
 import { ChapterMetadataEditComponent } from './editor/chapter-metadata-edit.component';
 import { CourseMetadataEditComponent } from './editor/course-metadata-edit.component';
 import { SectionEditComponent } from './editor/section-edit.component';
+import { CoursePreviewComponent } from './course-preview/course-preview.component';
 
 import { LoginGuard } from './login-guard.service';
 
@@ -15,6 +16,10 @@ const appRoutes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent
+    },
+    {
+        path: 'course/:id',
+        component: CoursePreviewComponent
     },
     {
         path: 'course/:id/chapter/:chapter/section/:section',
