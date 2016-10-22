@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { CoursesService } from './courses.service';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './shared/authentication.service';
 
 import { Course } from './course';
 

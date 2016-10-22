@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="row">
-        <div (click)="loadCourse(course)" class="col-sm-3 dashboard-item" *ngFor="let course of courses">
-            <img src="app/images/haskell.png" />
-            <label>{{course.meta.title}}</label>
-            <a *ngIf="authenticationService.isLoggedIn()" (click)="editCourse(course)">Edit</a>
-        </div>
-    </div>
+	<div class="row">
+		<div (click)="loadCourse(course)" class="col-sm-3 dashboard-item" *ngFor="let course of courses">
+			<img src="assets/images/{{course.id}}.png" />
+			<label>{{course.meta.title}}</label>
+			<a *ngIf="authenticationService.isLoggedIn()" (click)="editCourse(course)">Edit</a>
+		</div>
+	</div>
 </div>

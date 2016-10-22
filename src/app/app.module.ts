@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard.component';
 import { CourseComponent } from './course.component';
-import { LoginComponent } from './login.component';
+import { LoginComponent } from './login/login.component';
 import { EditorComponent } from './editor.component';
 import { SectionEditComponent } from './editor/section-edit.component';
 import { CourseMetadataEditComponent } from './editor/course-metadata-edit.component';
@@ -21,8 +21,8 @@ import { LogService } from './shared/log.service';
 
 import { CoursesService } from './courses.service';
 import { RuleEvaluatorService } from './rule-evaluator.service';
-import { AuthenticationService } from './authentication.service';
-import { LoginGuard } from './login-guard.service';
+import { AuthenticationService } from './shared/authentication.service';
+import { LoginGuard } from './login/login-guard.service';
 import { CoursePreviewComponent } from './course-preview/course-preview.component';
 
 @NgModule({
@@ -47,8 +47,8 @@ import { CoursePreviewComponent } from './course-preview/course-preview.componen
         CoursePreviewComponent
     ],
     bootstrap: [AppComponent],
-    providers: [CoursesService, RuleEvaluatorService, 
+    providers: [CoursesService, RuleEvaluatorService,
         AuthenticationService, StorageService, LoginGuard, Utils, LogService]
 })
 
-export class AppModule {}
+export class AppModule { }

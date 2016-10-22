@@ -10,7 +10,9 @@ export class AuthenticationService {
         let email: string = authenticationState.email;
         let password: string = authenticationState.password;
 
-        if ((email != "sanjay.verma.nitk@gmail.com") || (password != "haryana")) {
+        if (((email != "sanjay.verma.nitk@gmail.com") && (password != "haryana"))
+            && ((email != "thisismyidashish@gmail.com") && (password != "ashishnegi001"))
+        ) {
             return;
         }
 

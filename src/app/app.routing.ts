@@ -3,14 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import { CourseComponent } from './course.component';
-import { LoginComponent } from './login.component';
+import { LoginComponent } from './login/login.component';
 import { EditorComponent } from './editor.component';
 import { ChapterMetadataEditComponent } from './editor/chapter-metadata-edit.component';
 import { CourseMetadataEditComponent } from './editor/course-metadata-edit.component';
 import { SectionEditComponent } from './editor/section-edit.component';
 import { CoursePreviewComponent } from './course-preview/course-preview.component';
 
-import { LoginGuard } from './login-guard.service';
+import { LoginGuard } from './login/login-guard.service';
 
 const appRoutes: Routes = [
     {
