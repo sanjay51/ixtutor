@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { CoursesService } from './../courses.service';
-import { Course, ChapterMeta, Chapter, Section } from './../course';
-import { Utils } from './../shared/utils.service';
+import { CoursesService } from '../../shared/courses.service';
+import { Course, ChapterMeta, Chapter, Section } from '../../course';
+import { Utils } from '../../shared/utils.service';
 
 @Component({
     selector: 'chapter-metadata-edit',

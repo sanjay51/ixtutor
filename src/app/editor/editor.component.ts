@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Course, Section, Chapter } from './course';
-import { CoursesService } from './courses.service';
+import { Course, Section, Chapter } from './../course';
+import { CoursesService } from './../shared/courses.service';
 
 @Component({
     selector: 'my-editor',

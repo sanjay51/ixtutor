@@ -5,10 +5,10 @@ import { DashboardComponent } from './dashboard.component';
 import { CourseComponent } from './course.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { EditorComponent } from './editor.component';
-import { ChapterMetadataEditComponent } from './editor/chapter-metadata-edit.component';
-import { CourseMetadataEditComponent } from './editor/course-metadata-edit.component';
-import { SectionEditComponent } from './editor/section-edit.component';
+import { EditorComponent } from './editor/editor.component';
+import { ChapterMetadataEditComponent } from './editor/chapter-metadata-edit/chapter-metadata-edit.component';
+import { CourseMetadataEditComponent } from './editor/course-metadata-edit/course-metadata-edit.component';
+import { SectionEditComponent } from './editor/section-edit/section-edit.component';
 import { CoursePreviewComponent } from './course-preview/course-preview.component';
 
 import { LoginGuard } from './login/login-guard.service';

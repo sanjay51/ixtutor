@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Course, Section, Policy, Chapter } from './course';
-import { CoursesService } from './courses.service';
+import { CoursesService } from './shared/courses.service';
 import { RuleEvaluatorService } from './rule-evaluator.service';
 
 @Component({

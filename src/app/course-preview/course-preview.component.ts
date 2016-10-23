@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Course } from '../course';
-import { CoursesService } from '../courses.service';
+import { CoursesService } from '../shared/courses.service';
 
 @Component({
   selector: 'app-course-preview',

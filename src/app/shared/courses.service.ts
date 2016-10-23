@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Course, Meta } from './course';
-import { Utils, COURSE_ID } from './shared/utils.service';
-import { LogService } from './shared/log.service';
+import { Course, Meta } from '../course';
+import { Utils, COURSE_ID } from './utils.service';
+import { LogService } from './log.service';
 import { Observable } from 'rxjs/Observable';
 
-import { StorageService, API } from './shared/storage.service'
+import { StorageService, API } from './storage.service'
 
 @Injectable()
 export class CoursesService {
