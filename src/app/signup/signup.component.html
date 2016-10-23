@@ -1,0 +1,29 @@
+<div class="container" *ngIf="!isSignupComplete">
+	<h1>Sign Up</h1>
+	<form>
+		<div class="form-group">
+			<label for="email">Name</label>
+			<input [(ngModel)]="signupState.name" (ngModelChange)="revalidateForm()" type="text" class="form-control" name="name" required>
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input [(ngModel)]="signupState.email" (ngModelChange)="revalidateForm()" type="text" class="form-control" name="email" required>
+		</div>
+		<div class="form-group">
+			<label for="password">Password <small><i>(min 7 characters)</i></small></label>
+			<input [(ngModel)]="signupState.password" (ngModelChange)="revalidateForm()" type="password" class="form-control" name="password" required>
+		</div>
+		<div class="form-group">
+			<label for="confirmPassword">Confirm password</label>
+			<input [(ngModel)]="signupState.confirmPassword" (ngModelChange)="revalidateForm()" type="password" class="form-control" name="confirmPassword" required>
+		</div>
+	</form>
+  <div class="alert alert-danger" *ngFor="let error of errors">
+    {{error}}
+  </div>
+	<button (click)="trySignUp()" class="btn btn-default">Sign Up</button>
+</div>
+
+<div *ngIf="isSignupComplete" class="container">
+  Thank you for signing up. A confirmation mail has been sent to your email <b>{{signupState.email}}</b>.
+</div>

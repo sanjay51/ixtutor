@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { CourseComponent } from './course.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 import { EditorComponent } from './editor.component';
 import { ChapterMetadataEditComponent } from './editor/chapter-metadata-edit.component';
 import { CourseMetadataEditComponent } from './editor/course-metadata-edit.component';
@@ -11,6 +12,7 @@ import { SectionEditComponent } from './editor/section-edit.component';
 import { CoursePreviewComponent } from './course-preview/course-preview.component';
 
 import { LoginGuard } from './login/login-guard.service';
+import { SignupGuard } from './signup/signup-guard.service';
 
 const appRoutes: Routes = [
     {
@@ -43,6 +45,11 @@ const appRoutes: Routes = [
         path: 'login',
         component: LoginComponent,
         canActivate: [LoginGuard]
+    },
+    {
+        path: 'signup',
+        component: SignupComponent,
+        canActivate: [SignupGuard]
     }
 ];
 

@@ -18,12 +18,15 @@ import { ChapterMetadataEditComponent } from './editor/chapter-metadata-edit.com
 import { StorageService } from './shared/storage.service';
 import { Utils } from './shared/utils.service';
 import { LogService } from './shared/log.service';
+import { ValidatorService } from './shared/validator.service';
 
 import { CoursesService } from './courses.service';
 import { RuleEvaluatorService } from './rule-evaluator.service';
 import { AuthenticationService } from './shared/authentication.service';
 import { LoginGuard } from './login/login-guard.service';
+import { SignupGuard } from './signup/signup-guard.service';
 import { CoursePreviewComponent } from './course-preview/course-preview.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
     imports: [
@@ -44,11 +47,12 @@ import { CoursePreviewComponent } from './course-preview/course-preview.componen
         SectionEditComponent,
         CourseMetadataEditComponent,
         ChapterMetadataEditComponent,
-        CoursePreviewComponent
+        CoursePreviewComponent,
+        SignupComponent
     ],
     bootstrap: [AppComponent],
     providers: [CoursesService, RuleEvaluatorService,
-        AuthenticationService, StorageService, LoginGuard, Utils, LogService]
+        AuthenticationService, StorageService, LoginGuard, SignupGuard, ValidatorService, Utils, LogService]
 })
 
 export class AppModule { }

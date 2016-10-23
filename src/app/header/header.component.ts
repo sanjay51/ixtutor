@@ -22,6 +22,11 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(link);
     }
 
+    gotoSignup() {
+        let link = ["/signup"];
+        this.router.navigate(link);
+    }
+
     logout() {
         this.authenticationService.logout();
     }

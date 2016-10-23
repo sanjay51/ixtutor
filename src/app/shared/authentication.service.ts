@@ -32,6 +32,10 @@ export class AuthenticationService {
         return false;
     }
 
+    signup(authenticationState: AuthenticationState) {
+        // do real sign up
+    }
+
     getEmail(): string {
         return this.getAuthState().email;
     }
@@ -44,9 +48,26 @@ export class AuthenticationService {
 export class AuthenticationState {
     email: string;
     password: string;
+    name: string;
 
     constructor() {
         this.email = "";
         this.password = "";
+        this.name = "";
+    }
+
+    withEmail(email: string): AuthenticationState {
+        this.email = email;
+        return this;
+    }
+
+    withPassword(password: string): AuthenticationState {
+        this.password = password;
+        return this;
+    }
+
+    withName(name: string): AuthenticationState {
+        this.name = name;
+        return this;
     }
 }
