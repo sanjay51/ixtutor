@@ -1,5 +1,5 @@
 <div class="header">
-	{{title}}
+    <a><img (click)="gotoHome()" src="assets/images/logo.jpg" alt="ixTutor.net" width=70 /></a>
 	<a style="color:pink" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
 	<span *ngIf="authenticationService.isLoggedIn()">{{authenticationService.getEmail()}}</span>
 	<button (click)="logout()" *ngIf="authenticationService.isLoggedIn()">Logout</button>

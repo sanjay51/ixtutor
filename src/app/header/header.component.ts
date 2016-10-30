@@ -27,6 +27,11 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(link);
     }
 
+    gotoHome() {
+        let link = ["/"];
+        this.router.navigate(link);
+    }
+
     logout() {
         this.authenticationService.logout();
     }
