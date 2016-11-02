@@ -1,3 +1,4 @@
+import { LogService } from './../shared/log.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService, AuthenticationState } from './../shared/authentication.service';
@@ -12,6 +13,7 @@ export class SignupComponent implements OnInit {
     signupState: SignupState;
     errors: string[] = [];
     isSignupComplete: boolean = false;
+    LOG_TAG = "SignupComponent: ";
 
     /*
     Only show errors once the user has tried sign up once.
@@ -20,7 +22,8 @@ export class SignupComponent implements OnInit {
 
     constructor(private authenticationService: AuthenticationService,
         private validator: ValidatorService,
-        private router: Router) {
+        private router: Router,
+        private Log: LogService) {
         this.signupState = new SignupState();
     }
 
@@ -32,13 +35,14 @@ export class SignupComponent implements OnInit {
             return;
         }
 
-        let authenticationState: AuthenticationState = new AuthenticationState()
-            .withName(this.signupState.name)
-            .withEmail(this.signupState.email)
-            .withPassword(this.signupState.password);
+        let signupPromise = this.authenticationService.signup(this.signupState).toPromise();
 
-        this.authenticationService.signup(authenticationState);
-        this.isSignupComplete = true;
+        signupPromise.then(x => {
+            this.isSignupComplete = true;
+        }).catch(error => {
+            this.Log.error(this.LOG_TAG, error);
+            alert("Sign up failed. Please check your internet connection or try again.");
+        })
 
         if (this.authenticationService.isLoggedIn()) {
             let link = ['/dashboard'];

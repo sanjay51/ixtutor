@@ -1,0 +1,35 @@
+<div class="container" *ngIf="user">
+  <div class="row">
+    <div class="col col-sm-3">
+      ID: {{user.id}}
+    </div>
+    <div class="col col-sm-3">
+      Email: {{user.email}}
+    </div>
+    <div class="col col-sm-3">
+      Name: {{user.userData.name}}
+    </div>
+    <div class="col col-sm-3">
+      Status: {{user.userData.status}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm-3">
+      Creation timestamp: {{user.userData.creation_timestamp}}
+    </div>
+  </div>
+
+  Courses you author:
+  <div class="row" *ngFor="let courseId of user.userData.courses_authored">
+    <div class="col col-sm-3">
+      {{courseId}}
+    </div>
+  </div>
+
+  Courses you are enrolled in:
+  <div class="row">
+    <div class="col-sm-3" *ngFor="let courseEnrollment of user.userData.courses_enrolled">
+      {{courseEnrollment.courseId}}
+    </div>
+  </div>
+</div>

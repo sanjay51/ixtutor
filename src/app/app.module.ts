@@ -27,6 +27,7 @@ import { LoginGuard } from './login/login-guard.service';
 import { SignupGuard } from './signup/signup-guard.service';
 import { CoursePreviewComponent } from './course-preview/course-preview.component';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
     imports: [
@@ -48,7 +49,8 @@ import { SignupComponent } from './signup/signup.component';
         CourseMetadataEditComponent,
         ChapterMetadataEditComponent,
         CoursePreviewComponent,
-        SignupComponent
+        SignupComponent,
+        ProfileComponent
     ],
     bootstrap: [AppComponent],
     providers: [CoursesService, RuleEvaluatorService,

@@ -1,3 +1,4 @@
+import { SignupState } from './../signup/signup.component';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import './rxjs-operators';
@@ -40,11 +41,27 @@ export class StorageService {
             .catch(this.handleError);
     }
 
+    public getUserByEmail(email: string): Observable<any> {
+        this.Log.debug(this.LOG_TAG, "remoteCall=1,api=getUserByEmail,email=" + email);
+        let url: string = this.URL + '/user' + '?userEmail=' + email + '&operation=getUserByEmail';
+        return this.http.get(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     private getAllCoursesMetadata(): Observable<any> {
         let url: string = this.URL + '/getCourse' + '?operation=getAllCoursesMetadata';
         return this.http.get(url)
             .map(this.extractAllData)
             .catch(this.handleError);
+    }
+
+    public signupUser(signupState: SignupState): Observable<any> {
+        let url: string = this.URL + '/user' + '?operation=signup' +
+                '&email=' + signupState.email + '&password=' + signupState.password +
+                '&name=' + encodeURIComponent(signupState.name);
+        this.Log.debug(this.LOG_TAG, "signupURL=" + url);
+        return this.http.get(url);
     }
 
     private updateCourseMetadata(courseId: string, metadata: string): Observable<any> {
