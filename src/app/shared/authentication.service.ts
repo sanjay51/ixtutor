@@ -1,26 +1,29 @@
+import { Course } from './../course';
 import { SignupState } from './../signup/signup.component';
 import { StorageService } from './storage.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 const AUTH_STATE: string = "AUTH_STATE";
+const USER_PROFILE: string = "USER_PROFILE";
 
 @Injectable()
 export class AuthenticationService {
     constructor(private storageService: StorageService) { }
 
-    login(authenticationState: AuthenticationState) {
+    login(authenticationState: AuthenticationState): Observable<any> {
         let email: string = authenticationState.email;
         let password: string = authenticationState.password;
 
-        if (((email != "sanjay.verma.nitk@gmail.com") && (password != "haryana"))
-            && ((email != "thisismyidashish@gmail.com") && (password != "ashishnegi001"))
-        ) {
-            return;
-        }
+		let observable = this.storageService.login(email, password);
 
-        let authState = { email: authenticationState.email, password: authenticationState.password, isLoggedIn: true };
-        localStorage.setItem(AUTH_STATE, JSON.stringify(authState));
+        observable.subscribe(response => {
+            let authState = { id: response.id, email: response.email, password: response.password, isLoggedIn: true };
+            localStorage.setItem(AUTH_STATE, JSON.stringify(authState));
+            localStorage.setItem(USER_PROFILE, response.data)
+        });
+
+        return observable;
     }
 
     logout() {
@@ -55,10 +58,32 @@ export class AuthenticationService {
 		return observable;
     }
 
+    getUserProfileFromCache(): User {
+        let profile = localStorage.getItem(USER_PROFILE);
+        let authState = this.getAuthState();
+
+        return new User(authState.id, authState.email).withUserData(new UserData(JSON.parse(profile)));
+    }
+
 	mapResponseAsUserObject(rawUser: any): User {
 		let user: User = User.newInstanceFromRawData(rawUser.id, rawUser.email, JSON.parse(rawUser.data));
 		return user;
 	}
+
+    isCourseEditor(course: Course): boolean {
+        if (! this.isLoggedIn()) {
+            return false;
+        }
+
+        let userProfile = this.getUserProfileFromCache();
+        for (let courseId of userProfile.userData.courses_authored) {
+            if (+courseId == course.id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 
 export class AuthenticationState {

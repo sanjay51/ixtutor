@@ -33,4 +33,8 @@ export class DashboardComponent implements OnInit {
         let link = ['/editor', 'course', course.id];
         this.router.navigate(link);
     }
+
+    isCourseEditor(course: Course) {
+        return this.authenticationService.isCourseEditor(course);
+    }
 }

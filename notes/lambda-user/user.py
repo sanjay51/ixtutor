@@ -33,7 +33,7 @@ def lambda_handler(event, context):
             userId = request['userId']
             return respond(None, getUserById(userId))
         elif operation == 'login':
-            userEmail = request['userEmail']
+            userEmail = request['email']
             password = request['password']
             return respond(None, login(userEmail, password))
         elif operation == 'signup':
@@ -52,7 +52,11 @@ def getUserById(userId):
     return getItem('user', { 'id': userId })
 
 def login(userEmail, password):
-    return getUserByEmail(userEmail)
+    userObject = getUserByEmail(userEmail)
+    if userObject['Item']['password'] == password:
+        return userObject
+    else:
+        return "false"
 
 def signup(email, password, name):
     # make a UUID based on the host ID and current time

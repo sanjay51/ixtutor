@@ -49,6 +49,14 @@ export class StorageService {
             .catch(this.handleError);
     }
 
+    public login(email: string, password: string): Observable<any> {
+        this.Log.debug(this.LOG_TAG, "remoteCall=1,api=login,email=" + email);
+        let url: string = this.URL + '/user' + '?email=' + email + '&password=' + password + '&operation=login';
+        return this.http.get(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     private getAllCoursesMetadata(): Observable<any> {
         let url: string = this.URL + '/getCourse' + '?operation=getAllCoursesMetadata';
         return this.http.get(url)
@@ -96,7 +104,6 @@ export class StorageService {
         // We'd also dig deeper into the error to get a better message
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-        this.Log.error("ERROR GET", errMsg);
         return errMsg;
     }
 }

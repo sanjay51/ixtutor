@@ -16,13 +16,14 @@ export class LoginComponent implements OnInit {
     ngOnInit() { }
 
     tryLogin() {
-        this.authenticationService.login(this.authenticationState);
-
-        if (this.authenticationService.isLoggedIn()) {
-            let link = ['/dashboard'];
-            this.router.navigate(link);
-        } else {
-            this.authenticationState = new AuthenticationState();
-        }
+        this.authenticationService.login(this.authenticationState)
+            .subscribe(response => {
+                if (this.authenticationService.isLoggedIn()) {
+                    let link = ['/dashboard'];
+                    this.router.navigate(link);
+                } else {
+                    this.authenticationState = new AuthenticationState();
+                }
+            })
     }
 }
