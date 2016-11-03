@@ -1,3 +1,8 @@
+<div *ngIf="! course" style="text-align:center">
+	<img align="center" src="assets/images/ellipsis.gif" /><br/>
+	<label>Just a moment..</label>
+</div>
+
 <div class="container" *ngIf="course">
 	<div class="content">
 		<img src="assets/images/{{courseId}}.png" /><br/>

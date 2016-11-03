@@ -1,4 +1,8 @@
 <div class="container">
+	<div *ngIf="courses && courses.length == 0" style="text-align:center">
+		<img align="center" src="assets/images/ellipsis.gif" /><br/>
+		<label>Just a moment..</label>
+	</div>
 	<div class="row">
 		<div (click)="loadCourse(course)" class="col-sm-3 dashboard-item" *ngFor="let course of courses">
 			<img src="assets/images/{{course.id}}.png" />
