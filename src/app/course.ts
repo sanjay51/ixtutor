@@ -61,20 +61,27 @@ export class Course {
 }
 
 export class Meta {
-    name: string;
     category: string;
     title: string;
+    oneLineDescription: string;
     description: string;
     author: string;
     beginChapterIndex: number;
 
     constructor(rawMeta: any) {
-        this.name = rawMeta.name;
         this.category = rawMeta.category;
         this.title = rawMeta.title;
+        this.oneLineDescription = rawMeta.oneLineDescription;
         this.description = rawMeta.description;
         this.author = rawMeta.author;
         this.beginChapterIndex = rawMeta.beginChapterIndex;
+    }
+
+    static newInstance(): Meta {
+        let rawMeta = { category: "ProgrammingLanguage", title: "", 
+            description: "", oneLineDescription: "",
+            author: "", beginChapterIndex: 0 }
+        return new Meta(rawMeta);
     }
 }
 

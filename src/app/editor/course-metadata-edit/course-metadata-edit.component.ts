@@ -10,7 +10,7 @@ import { Utils } from '../../shared/utils.service';
     styleUrls: ['./course-metadata-edit.component.css']
 })
 export class CourseMetadataEditComponent implements OnInit {
-    courseId: number;
+    courseId: string;
 
     course: Course;
     meta: Meta;
@@ -20,7 +20,7 @@ export class CourseMetadataEditComponent implements OnInit {
 
     ngOnInit() {
         this.route.parent.params.forEach((params: Params) => {
-            this.courseId = +params['courseId'];
+            this.courseId = params['courseId'];
 
             this.coursesService.getCourse(this.courseId)
                 .subscribe(course => {

@@ -42,6 +42,10 @@ export class AuthenticationService {
         return this.storageService.signupUser(signupState);
     }
 
+    getUserId(): string {
+        return this.getUserProfileFromCache().id;
+    }
+
     getEmail(): string {
         return this.getAuthState().email;
     }

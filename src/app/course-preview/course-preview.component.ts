@@ -9,14 +9,14 @@ import { CoursesService } from '../shared/courses.service';
   styleUrls: ['./course-preview.component.css']
 })
 export class CoursePreviewComponent implements OnInit {
-  courseId: number;
+  courseId: string;
   course: Course;
 
   constructor(private router: Router, private route: ActivatedRoute, private coursesService: CoursesService) { }
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
-      this.courseId = +params['id'];
+      this.courseId = params['id'];
 
       this.coursesService.getCourse(this.courseId)
         .subscribe(

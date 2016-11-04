@@ -9,7 +9,7 @@ import { Utils } from '../../shared/utils.service';
     templateUrl: './chapter-metadata-edit.component.html'
 })
 export class ChapterMetadataEditComponent implements OnInit {
-    courseId: number;
+    courseId: string;
     chapterId: number;
 
     course: Course;
@@ -21,7 +21,7 @@ export class ChapterMetadataEditComponent implements OnInit {
 
     ngOnInit() {
         this.route.parent.params.forEach((params: Params) => {
-            this.courseId = +params['courseId'];
+            this.courseId = params['courseId'];
         });
 
         this.route.params.forEach((params: Params) => {

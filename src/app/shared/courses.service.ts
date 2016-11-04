@@ -36,7 +36,7 @@ export class CoursesService {
 		return observable;
 	}
 
-	getFromCache(id: number) {
+	getFromCache(id: string) {
 		if (this.COURSES[id]) {
 			return this.COURSES[id];
 		}
@@ -48,7 +48,7 @@ export class CoursesService {
 		this.COURSES[course.id] = course;
 	}
 
-	getCourse(id: number): Observable<Course> {
+	getCourse(id: string): Observable<Course> {
 		let courseFromCache = this.getFromCache(id);
 		if (courseFromCache) {
 			this.Log.debug(this.LOG_TAG, "CacheHit=1,method=getCourse,courseId=" + id);
@@ -67,6 +67,10 @@ export class CoursesService {
 
 		observable.subscribe(course => this.putInCache(course));
 		return observable;
+	}
+
+	createCourse(courseMeta: Meta): Observable<any> {
+		return this.storageService.createCourse(courseMeta);
 	}
 
 	mapResponseAsCourseObject(data: any): Course {

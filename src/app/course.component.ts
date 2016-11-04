@@ -11,7 +11,7 @@ import { RuleEvaluatorService } from './rule-evaluator.service';
     styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-    courseId: number;
+    courseId: string;
     chapterId: number;
     sectionId: number;
 
@@ -29,7 +29,7 @@ export class CourseComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
-            this.courseId = +params['id'];
+            this.courseId = params['id'];
             this.chapterId = +params['chapter'];
             this.sectionId = +params['section'];
 

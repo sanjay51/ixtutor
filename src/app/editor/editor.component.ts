@@ -10,14 +10,14 @@ import { CoursesService } from './../shared/courses.service';
 })
 export class EditorComponent implements OnInit {
     course: Course;
-    courseId: number;
+    courseId: string;
     courseOriginal: string;
 
     constructor(private router: Router, private route: ActivatedRoute, private coursesService: CoursesService) { }
 
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
-            this.courseId = +params['courseId'];
+            this.courseId = params['courseId'];
 
             this.coursesService.getCourse(this.courseId)
                 .subscribe(course => {

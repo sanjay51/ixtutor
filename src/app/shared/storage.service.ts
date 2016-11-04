@@ -1,3 +1,4 @@
+import { Meta } from './../course';
 import { SignupState } from './../signup/signup.component';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
@@ -69,6 +70,16 @@ export class StorageService {
                 '&email=' + signupState.email + '&password=' + signupState.password +
                 '&name=' + encodeURIComponent(signupState.name);
         this.Log.debug(this.LOG_TAG, "signupURL=" + url);
+        return this.http.get(url);
+    }
+
+    public createCourse(courseMeta: Meta): Observable<any> {
+        let url = this.URL + '/getCourse' + '?operation=createCourse' +
+                '&category=' + courseMeta.category + '&title=' + encodeURIComponent(courseMeta.title) +
+                '&oneLineDescription=' + encodeURIComponent(courseMeta.oneLineDescription) +
+                '&author=' + courseMeta.author +
+                '&description=' + encodeURIComponent(courseMeta.description);
+        this.Log.debug(this.LOG_TAG, "createCourseURL=" + url);
         return this.http.get(url);
     }
 

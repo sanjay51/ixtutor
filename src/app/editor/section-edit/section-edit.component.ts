@@ -9,7 +9,7 @@ import { Utils } from '../../shared/utils.service';
     templateUrl: './section-edit.component.html'
 })
 export class SectionEditComponent implements OnInit {
-    courseId: number;
+    courseId: string;
     chapterId: number;
     sectionId: number;
 
@@ -21,7 +21,7 @@ export class SectionEditComponent implements OnInit {
 
     ngOnInit() {
         this.route.parent.params.forEach((params: Params) => {
-            this.courseId = +params['courseId'];
+            this.courseId = params['courseId'];
         });
 
         this.route.params.forEach((params: Params) => {

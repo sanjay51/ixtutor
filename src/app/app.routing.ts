@@ -1,3 +1,4 @@
+import { NewCourseComponent } from './new-course/new-course.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -19,6 +20,10 @@ const appRoutes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent
+    },
+    {
+        path: 'course/new',
+        component: NewCourseComponent
     },
     {
         path: 'course/:id',
