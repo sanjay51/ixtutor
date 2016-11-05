@@ -29,6 +29,7 @@ import { CoursePreviewComponent } from './course-preview/course-preview.componen
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewCourseComponent } from './new-course/new-course.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
     imports: [
@@ -52,7 +53,8 @@ import { NewCourseComponent } from './new-course/new-course.component';
         CoursePreviewComponent,
         SignupComponent,
         ProfileComponent,
-        NewCourseComponent
+        NewCourseComponent,
+        FooterComponent
     ],
     bootstrap: [AppComponent],
     providers: [CoursesService, RuleEvaluatorService,
