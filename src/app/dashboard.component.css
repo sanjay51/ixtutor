@@ -1,9 +1,17 @@
 .dashboard-item {
-    margin: 10px; 
-    border:1px solid black; 
+    margin: 10px;  
+    background-color: white;
     cursor:pointer; 
-    border-radius: 20px; 
-    box-shadow:0px 0px 5px #000;
+    border: none;
+    box-shadow:0px 0px 2px gray;
+}
+
+.dashboard-item:hover {
+    margin: 10px;
+    background-color: white;
+    cursor:pointer; 
+    border: none;
+    box-shadow:0px 5px 20px gray;
 }
 
 .row {
