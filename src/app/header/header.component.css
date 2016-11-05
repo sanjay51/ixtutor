@@ -1,5 +1,9 @@
 .header {
-    background-color: #0288D1;
+    background: #00d2ff; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #00d2ff, #3a7bd5);
+    background: -o-linear-gradient(right, #00d2ff, #3a7bd5);
+    background: linear-gradient(to left, #00d2ff, #3a7bd5); /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     color: white;
     font-size: small;
     padding: 5px;
