@@ -1,3 +1,4 @@
+import { ImageHelperService } from './shared/image-helper.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -14,8 +15,9 @@ import { Course } from './course';
 export class DashboardComponent implements OnInit {
     courses: Course[] = [];
 
-    constructor(private router: Router, private coursesService: CoursesService
-        , private authenticationService: AuthenticationService) { }
+    constructor(private router: Router, private coursesService: CoursesService, 
+        private authenticationService: AuthenticationService,
+        private imageHelperService: ImageHelperService) { }
 
     ngOnInit() {
         this.coursesService.getAllCoursesMetadata()
@@ -36,5 +38,13 @@ export class DashboardComponent implements OnInit {
 
     isCourseEditor(course: Course) {
         return this.authenticationService.isCourseEditor(course);
+    }
+
+    getCourseImageURL(course: Course): string {
+        return this.imageHelperService.getCourseImageURL(course);
+    }
+
+    updateCourseImageURLtoDefault(course: Course) {
+        this.imageHelperService.updateCourseImageURLtoDefault(course);
     }
 }

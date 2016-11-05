@@ -5,7 +5,7 @@
 	</div>
 	<div class="row">
 		<div (click)="loadCourse(course)" class="col-sm-3 dashboard-item" *ngFor="let course of courses">
-			<img src="assets/images/{{course.id}}.png" />
+			<img [src]="getCourseImageURL(course)" (error)="updateCourseImageURLtoDefault(course)" />
 			<label>{{course.meta.title}}</label>
 			<a *ngIf="authenticationService.isLoggedIn() && isCourseEditor(course)" (click)="editCourse(course)">Edit</a>
 		</div>

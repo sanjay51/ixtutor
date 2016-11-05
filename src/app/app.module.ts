@@ -19,6 +19,7 @@ import { StorageService } from './shared/storage.service';
 import { Utils } from './shared/utils.service';
 import { LogService } from './shared/log.service';
 import { ValidatorService } from './shared/validator.service';
+import { ImageHelperService } from './shared/image-helper.service';
 
 import { CoursesService } from './shared/courses.service';
 import { RuleEvaluatorService } from './rule-evaluator.service';
@@ -58,7 +59,9 @@ import { FooterComponent } from './footer/footer.component';
     ],
     bootstrap: [AppComponent],
     providers: [CoursesService, RuleEvaluatorService,
-        AuthenticationService, StorageService, LoginGuard, SignupGuard, ValidatorService, Utils, LogService]
+        AuthenticationService, StorageService, LoginGuard, 
+        SignupGuard, ValidatorService, Utils, LogService,
+        ImageHelperService]
 })
 
 export class AppModule { }
