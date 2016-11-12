@@ -15,7 +15,8 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css"
+        "styles.css",
+        "bootstrap/3.3.7/css/bootstrap.min.css"
       ],
       "scripts": [],
       "environments": {
