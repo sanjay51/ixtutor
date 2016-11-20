@@ -1,16 +1,16 @@
 export class Course {
-    id: number;
+    id: string;
     meta: Meta;
     chapters: Chapter[] = [];
 
-    constructor(id: number, meta: Meta, chapters: Chapter[]) {
+    constructor(id: string, meta: Meta, chapters: Chapter[]) {
         this.id = id;
         this.meta = meta;
         
         this.chapters = chapters;
     }
 
-    static newInstanceFromRawData(id: number, rawMeta: any, rawChapters: any): Course {
+    static newInstanceFromRawData (id: string, rawMeta: any, rawChapters: any): Course {
         let meta: Meta = new Meta(rawMeta);
         let chapters: Chapter[] = [];
 
@@ -21,6 +21,10 @@ export class Course {
         }
 
         return new Course(id, meta, chapters);
+    }
+
+    getDescription(): string {
+        return this.meta.description;
     }
 
     getChapterCount(): number {

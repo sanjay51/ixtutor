@@ -5,10 +5,11 @@
 
 <div class="container" *ngIf="course">
 	<div class="content">
-		<img src="assets/images/{{courseId}}.png" /><br/>
+		<img [src]="getCourseImageURL(course)" (error)="updateCourseImageURLtoDefault(course)" /><br/>
 		<label>{{course.meta.title}}</label><br/><br/>
 		<label>Author: {{course.meta.author}}</label><br/><br/>
 
-		<button class="btn btn-success" (click)="gotoCourse()">Begin course</button>
+		<button class="btn btn-success" (click)="gotoCourse()">Begin course</button><br/><br/>
+		<pre class="description">{{course.getDescription()}}</pre>
 	</div>
 </div>

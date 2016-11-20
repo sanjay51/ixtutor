@@ -81,7 +81,8 @@ export class AuthenticationService {
 
         let userProfile = this.getUserProfileFromCache();
         for (let courseId of userProfile.userData.courses_authored) {
-            if (+courseId == course.id) {
+            console.log("courseId:", courseId, "Course.id", course.id);
+            if (courseId == course.id + "") {
                 return true;
             }
         }
