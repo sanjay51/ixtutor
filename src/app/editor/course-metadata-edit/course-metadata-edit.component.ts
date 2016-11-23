@@ -1,3 +1,4 @@
+import { ImageHelperService } from './../../shared/image-helper.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CoursesService } from '../../shared/courses.service';

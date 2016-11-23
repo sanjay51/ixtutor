@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Course, Section, Policy, Chapter } from './course';
 import { CoursesService } from './shared/courses.service';
 import { RuleEvaluatorService } from './rule-evaluator.service';
+import { MarkupHelperService } from './shared/markup-helper.service';
 
 @Component({
     selector: 'course',
@@ -25,7 +26,8 @@ export class CourseComponent implements OnInit {
     isCompleted: boolean = false; // has user completed current section
 
     constructor(private route: ActivatedRoute, private ruleEvaluatorService: RuleEvaluatorService,
-        private coursesService: CoursesService, private router: Router) { }
+        private coursesService: CoursesService, private router: Router,
+        private markupHelperService: MarkupHelperService) { }
 
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
@@ -54,6 +56,10 @@ export class CourseComponent implements OnInit {
         this.course = course;
         this.chapter = this.course.chapters[this.chapterId];
         this.section = this.chapter.sections[this.sectionId];
+    }
+
+    getInstructionText() {
+        return this.markupHelperService.parseToHTML(this.section.instruction.text);
     }
 
     evaluate(): void {
