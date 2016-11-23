@@ -96,10 +96,10 @@ export class CoursesService {
 		this.storageService.get(API.updateCourseChapters, params)
 	}
 
-	saveCourse(course: Course) {
+	saveCourse(course: Course): Observable<any> {
 		let courseMeta = JSON.stringify(course.meta, null, 0);
 		let params = { 'courseId': course.id, 'metadata': courseMeta}
-		this.storageService.get(API.updateCourseMetadata, params)
+		return this.storageService.get(API.updateCourseMetadata, params)
 	}
 
 	invalidateCache() {

@@ -88,8 +88,9 @@ export class StorageService {
                 '&courseId=' + courseId + '&metadata=' + encodeURIComponent(metadata);
         console.log(url);
 
-        this.http.get(url).subscribe(x => console.log(x));
-        return Observable.create();
+        let observable = this.http.get(url);
+        observable.subscribe(x => console.log(x));
+        return observable;
     }
 
     private updateCourseChapters(courseId: string, chapters: string): Observable<any> {

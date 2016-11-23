@@ -14,6 +14,11 @@ export class CourseMetadataEditComponent implements OnInit {
 
     course: Course;
     meta: Meta;
+    saveStatus: SaveStatus;
+    saveButtonText = "Save";
+
+    SAVE_TEXT = "Save";
+    SAVING_TEXT = "Saving..";
 
     constructor(private router: Router, private route: ActivatedRoute,
         private coursesService: CoursesService, private utils: Utils) { }
@@ -21,6 +26,7 @@ export class CourseMetadataEditComponent implements OnInit {
     ngOnInit() {
         this.route.parent.params.forEach((params: Params) => {
             this.courseId = params['courseId'];
+            this.saveStatus = SaveStatus.default;
 
             this.coursesService.getCourse(this.courseId)
                 .subscribe(course => {
@@ -31,7 +37,16 @@ export class CourseMetadataEditComponent implements OnInit {
     }
 
     save() {
-        this.coursesService.saveCourse(this.course);
+        this.setSavingMode();
+        this.coursesService.saveCourse(this.course)
+            .subscribe(
+                response => {
+                    this.setSuccessMode();
+                },
+                error => {
+                    this.setErrorMode();
+                }
+            )
     }
 
     loadChapterMetadataEditor(chapter: Chapter) {
@@ -42,4 +57,23 @@ export class CourseMetadataEditComponent implements OnInit {
     addChapter() {
         this.course.addChapter(this.utils.getRawChapterTemplate());
     }
+
+    setSavingMode() {
+        this.saveButtonText = this.SAVING_TEXT;
+        this.saveStatus = SaveStatus.saving;
+    }
+
+    setErrorMode() {
+        this.saveButtonText = this.SAVE_TEXT;
+        this.saveStatus = SaveStatus.error;
+    }
+
+    setSuccessMode() {
+        this.saveButtonText = this.SAVE_TEXT;
+        this.saveStatus = SaveStatus.success;
+    }
+}
+
+enum SaveStatus {
+    default, success, error, saving
 }
