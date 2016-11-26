@@ -15,7 +15,7 @@
                                     <li><a (click)="loadChapterMetadataEditor(chapter)">edit chapter</a></li>
                                     <li>sections
                                         <ul *ngFor="let section of chapter.sections; let sIndex = index">
-                                            <li><a (click)="loadSectionEditor(chapter, section)" >{{sIndex+1}}. "{{section.title}}"</a>
+                                            <li><a (click)="loadSectionEditor(chapter, section)">{{sIndex+1}}. "{{section.title}}"</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -28,6 +28,7 @@
         </div>
 
         <div class="col-md-8" style="background-color: white; height: 100%">
+            <app-editor-options></app-editor-options>
             <router-outlet></router-outlet>
         </div>
     </div>

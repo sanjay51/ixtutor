@@ -90,15 +90,15 @@ export class CoursesService {
 		return courses;
 	}
 
-	saveCourseChapters(course: Course) {
+	saveCourseChapters(course: Course): Observable<any> {
 		let chapters = JSON.stringify(course.chapters, null, 0);
-		let params = { 'courseId': course.id, 'chapters': chapters}
-		this.storageService.get(API.updateCourseChapters, params)
+		let params = { 'courseId': course.id, 'chapters': chapters }
+		return this.storageService.get(API.updateCourseChapters, params)
 	}
 
 	saveCourse(course: Course): Observable<any> {
 		let courseMeta = JSON.stringify(course.meta, null, 0);
-		let params = { 'courseId': course.id, 'metadata': courseMeta}
+		let params = { 'courseId': course.id, 'metadata': courseMeta }
 		return this.storageService.get(API.updateCourseMetadata, params)
 	}
 

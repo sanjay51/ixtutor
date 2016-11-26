@@ -1,3 +1,4 @@
+import { EditorHelperService } from './editor/editor-helper.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -32,6 +33,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { FooterComponent } from './footer/footer.component';
+import { EditorOptionsComponent } from './editor/editor-options/editor-options.component';
 
 @NgModule({
     imports: [
@@ -56,13 +58,14 @@ import { FooterComponent } from './footer/footer.component';
         SignupComponent,
         ProfileComponent,
         NewCourseComponent,
-        FooterComponent
+        FooterComponent,
+        EditorOptionsComponent
     ],
     bootstrap: [AppComponent],
     providers: [CoursesService, RuleEvaluatorService,
-        AuthenticationService, StorageService, LoginGuard, 
+        AuthenticationService, StorageService, LoginGuard,
         SignupGuard, ValidatorService, Utils, LogService,
-        ImageHelperService, MarkupHelperService]
+        ImageHelperService, MarkupHelperService, EditorHelperService]
 })
 
 export class AppModule { }

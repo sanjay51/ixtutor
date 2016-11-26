@@ -67,25 +67,25 @@ export class StorageService {
 
     public signupUser(signupState: SignupState): Observable<any> {
         let url: string = this.URL + '/user' + '?operation=signup' +
-                '&email=' + signupState.email + '&password=' + signupState.password +
-                '&name=' + encodeURIComponent(signupState.name);
+            '&email=' + signupState.email + '&password=' + signupState.password +
+            '&name=' + encodeURIComponent(signupState.name);
         this.Log.debug(this.LOG_TAG, "signupURL=" + url);
         return this.http.get(url);
     }
 
     public createCourse(courseMeta: Meta): Observable<any> {
         let url = this.URL + '/getCourse' + '?operation=createCourse' +
-                '&category=' + courseMeta.category + '&title=' + encodeURIComponent(courseMeta.title) +
-                '&oneLineDescription=' + encodeURIComponent(courseMeta.oneLineDescription) +
-                '&author=' + courseMeta.author +
-                '&description=' + encodeURIComponent(courseMeta.description);
+            '&category=' + courseMeta.category + '&title=' + encodeURIComponent(courseMeta.title) +
+            '&oneLineDescription=' + encodeURIComponent(courseMeta.oneLineDescription) +
+            '&author=' + courseMeta.author +
+            '&description=' + encodeURIComponent(courseMeta.description);
         this.Log.debug(this.LOG_TAG, "createCourseURL=" + url);
         return this.http.get(url);
     }
 
     private updateCourseMetadata(courseId: string, metadata: string): Observable<any> {
         let url: string = this.URL + '/getCourse' + '?operation=updateCourseMetadata' +
-                '&courseId=' + courseId + '&metadata=' + encodeURIComponent(metadata);
+            '&courseId=' + courseId + '&metadata=' + encodeURIComponent(metadata);
         console.log(url);
 
         let observable = this.http.get(url);
@@ -95,11 +95,13 @@ export class StorageService {
 
     private updateCourseChapters(courseId: string, chapters: string): Observable<any> {
         let url: string = this.URL + '/getCourse' + '?operation=updateCourseChapters' +
-                '&courseId=' + courseId + '&chapters=' + encodeURIComponent(chapters);
+            '&courseId=' + courseId + '&chapters=' + encodeURIComponent(chapters);
         console.log(url);
 
-        this.http.get(url).subscribe(x => console.log(x));
-        return Observable.create();
+        let observable = this.http.get(url);
+        observable.subscribe(x => console.log(x));
+
+        return observable;
     }
 
     private extractData(res: Response) {

@@ -1,0 +1,8 @@
+<button (click)="showDiff()" class="btn">Show diff</button>
+<button (click)="save()" [disabled]="saveStatus == 3" class="btn btn-success">{{saveButtonText}}</button><br/>
+<div *ngIf="saveStatus == 1" class="alert alert-success">
+  <strong>Saved</strong> successfully.
+</div>
+<div *ngIf="saveStatus == 2" class="alert alert-danger">
+  <strong>Error!</strong> Please check your internet and try again.
+</div>

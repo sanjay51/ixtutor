@@ -1,33 +1,31 @@
+import { Observable } from 'rxjs/Observable';
 import { ImageHelperService } from './../../shared/image-helper.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CoursesService } from '../../shared/courses.service';
 import { Course, Meta, Chapter } from '../../course';
 import { Utils } from '../../shared/utils.service';
+import { AbstractEditor, EditorHelperService } from './../editor-helper.service';
 
 @Component({
     selector: 'course-metadata-edit',
     templateUrl: './course-metadata-edit.component.html',
     styleUrls: ['./course-metadata-edit.component.css']
 })
-export class CourseMetadataEditComponent implements OnInit {
+export class CourseMetadataEditComponent implements OnInit, AbstractEditor {
     courseId: string;
 
     course: Course;
     meta: Meta;
-    saveStatus: SaveStatus;
-    saveButtonText = "Save";
-
-    SAVE_TEXT = "Save";
-    SAVING_TEXT = "Saving..";
 
     constructor(private router: Router, private route: ActivatedRoute,
-        private coursesService: CoursesService, private utils: Utils) { }
+        private coursesService: CoursesService, private utils: Utils,
+        private editorHelper: EditorHelperService) { }
 
     ngOnInit() {
+        this.editorHelper.setActiveEditor(this);
         this.route.parent.params.forEach((params: Params) => {
             this.courseId = params['courseId'];
-            this.saveStatus = SaveStatus.default;
 
             this.coursesService.getCourse(this.courseId)
                 .subscribe(course => {
@@ -37,17 +35,12 @@ export class CourseMetadataEditComponent implements OnInit {
         });
     }
 
-    save() {
-        this.setSavingMode();
-        this.coursesService.saveCourse(this.course)
-            .subscribe(
-                response => {
-                    this.setSuccessMode();
-                },
-                error => {
-                    this.setErrorMode();
-                }
-            )
+    save(): Observable<any> {
+        return this.editorHelper.saveCourseMetadata(this.course);
+    }
+
+    getCourse(): Course {
+        return this.course;
     }
 
     loadChapterMetadataEditor(chapter: Chapter) {
@@ -58,23 +51,4 @@ export class CourseMetadataEditComponent implements OnInit {
     addChapter() {
         this.course.addChapter(this.utils.getRawChapterTemplate());
     }
-
-    setSavingMode() {
-        this.saveButtonText = this.SAVING_TEXT;
-        this.saveStatus = SaveStatus.saving;
-    }
-
-    setErrorMode() {
-        this.saveButtonText = this.SAVE_TEXT;
-        this.saveStatus = SaveStatus.error;
-    }
-
-    setSuccessMode() {
-        this.saveButtonText = this.SAVE_TEXT;
-        this.saveStatus = SaveStatus.success;
-    }
-}
-
-enum SaveStatus {
-    default, success, error, saving
 }

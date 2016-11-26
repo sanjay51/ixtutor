@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Observable';
+import { AbstractEditor, EditorHelperService } from './../editor-helper.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CoursesService } from '../../shared/courses.service';
@@ -8,7 +10,7 @@ import { Utils } from '../../shared/utils.service';
     selector: 'chapter-metadata-edit',
     templateUrl: './chapter-metadata-edit.component.html'
 })
-export class ChapterMetadataEditComponent implements OnInit {
+export class ChapterMetadataEditComponent implements OnInit, AbstractEditor {
     courseId: string;
     chapterId: number;
 
@@ -17,9 +19,11 @@ export class ChapterMetadataEditComponent implements OnInit {
     chapterMeta: ChapterMeta;
 
     constructor(private router: Router, private route: ActivatedRoute,
-        private coursesService: CoursesService, private utils: Utils) { }
+        private coursesService: CoursesService, private utils: Utils,
+        private editorHelper: EditorHelperService) { }
 
     ngOnInit() {
+        this.editorHelper.setActiveEditor(this);
         this.route.parent.params.forEach((params: Params) => {
             this.courseId = params['courseId'];
         });
@@ -41,8 +45,12 @@ export class ChapterMetadataEditComponent implements OnInit {
             });
     }
 
-    save() {
-        this.coursesService.saveCourseChapters(this.course);
+    save(): Observable<any> {
+        return this.editorHelper.saveChapterMetadata(this.course);
+    }
+
+    getCourse(): Course {
+        return this.course;
     }
 
     loadSectionEditor(section: Section) {

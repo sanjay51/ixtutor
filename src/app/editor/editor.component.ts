@@ -1,3 +1,4 @@
+import { EditorUI, EditorHelperService } from './editor-helper.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Course, Section, Chapter } from './../course';
@@ -8,16 +9,19 @@ import { CoursesService } from './../shared/courses.service';
     templateUrl: './editor.component.html',
     styleUrls: ['./editor.component.css']
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, EditorUI {
     course: Course;
     courseId: string;
     courseOriginal: string;
 
-    constructor(private router: Router, private route: ActivatedRoute, private coursesService: CoursesService) { }
+    constructor(private router: Router, private route: ActivatedRoute,
+        private coursesService: CoursesService,
+        private editorHelper: EditorHelperService) { }
 
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
             this.courseId = params['courseId'];
+            this.editorHelper.setEditorUI(this);
 
             this.coursesService.getCourse(this.courseId)
                 .subscribe(course => {
@@ -25,6 +29,10 @@ export class EditorComponent implements OnInit {
                     this.courseOriginal = JSON.stringify(this.course);
                 });
         })
+    }
+
+    setCourse(course: Course) {
+        this.course = course;
     }
 
     loadSectionEditor(chapter: Chapter, section: Section) {
