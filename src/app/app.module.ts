@@ -1,3 +1,4 @@
+import { InstructionsEditorWidgetComponent } from './editor/instructions-editor-widget/instructions-editor-widget.component';
 import { EditorHelperService } from './editor/editor-helper.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -59,7 +60,8 @@ import { EditorOptionsComponent } from './editor/editor-options/editor-options.c
         ProfileComponent,
         NewCourseComponent,
         FooterComponent,
-        EditorOptionsComponent
+        EditorOptionsComponent,
+        InstructionsEditorWidgetComponent
     ],
     bootstrap: [AppComponent],
     providers: [CoursesService, RuleEvaluatorService,

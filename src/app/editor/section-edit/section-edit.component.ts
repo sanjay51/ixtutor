@@ -1,3 +1,4 @@
+import { Instruction } from './../../course';
 import { Observable } from 'rxjs/Observable';
 import { AbstractEditor, EditorHelperService } from './../editor-helper.service';
 import { Component, OnInit } from '@angular/core';
@@ -68,5 +69,10 @@ export class SectionEditComponent implements OnInit, AbstractEditor {
     addStatementCondition(statement: PolicyStatement) {
         let rawCondition = this.utils.getRawStatementCondition();
         statement.addCondition(rawCondition);
+    }
+
+    editInstructions() {
+        let instructions: Instruction = this.section.instruction;
+        this.editorHelper.showInstructionEditorWidget(instructions);
     }
 }

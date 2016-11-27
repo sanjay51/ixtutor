@@ -1,0 +1,6 @@
+.instructions {
+    height: 100%;
+    background-color: darkslategrey;
+    color: white;
+    white-space: pre-wrap;
+}

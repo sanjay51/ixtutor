@@ -1,0 +1,22 @@
+<!-- Modal -->
+<div *ngIf="isVisible" class="modal fade show in danger" style="height:100%" id="myModal" role="dialog">
+  <div class="modal-dialog" style="width:80%; height:100%;">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" (click)="hide()" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Instructions editor</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div *ngIf="instructions" class="col-md-6">
+            <textarea style="height:100%; overflow-y:auto" [(ngModel)]="instructions.text" class="form-control" name="instructionText"></textarea>
+          </div>
+          <div class="col-md-6">
+            <pre class="instructions" style="overflow-y:auto" *ngIf="instructions" [innerHTML]="getCompiledInstructions()"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

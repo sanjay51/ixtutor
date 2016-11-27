@@ -1,13 +1,14 @@
 import { EditorOptionsComponent } from './editor-options/editor-options.component';
 import { Observable } from 'rxjs/Observable';
 import { CoursesService } from './../shared/courses.service';
-import { Course } from './../course';
+import { Course, Instruction } from './../course';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class EditorHelperService {
     activeEditor: AbstractEditor;
     editorUI: EditorUI;
+    instructionsEditorUI: InstructionsEditorUI;
 
     constructor(private coursesService: CoursesService) { }
 
@@ -36,6 +37,10 @@ export class EditorHelperService {
         this.editorUI = editorUI;
     }
 
+    setInstructionsEditorUI(instructionsEditorUI: InstructionsEditorUI) {
+        this.instructionsEditorUI = instructionsEditorUI;
+    }
+
     saveCourseMetadata(course: Course): Observable<any> {
         return this.coursesService.saveCourse(course);
     }
@@ -46,6 +51,10 @@ export class EditorHelperService {
 
     saveSection(course: Course): Observable<any> {
         return this.coursesService.saveCourseChapters(course);
+    }
+
+    showInstructionEditorWidget(instructions: Instruction) {
+        this.instructionsEditorUI.show(instructions);
     }
 
 }
@@ -63,4 +72,8 @@ export interface EditorOptionsUI {
 
 export interface EditorUI {
     setCourse(course: Course);
+}
+
+export interface InstructionsEditorUI {
+    show(instructions: Instruction);
 }
