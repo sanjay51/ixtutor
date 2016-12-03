@@ -80,6 +80,10 @@ export class CourseComponent implements OnInit {
         return this.course.chapters[this.chapterId].sections[this.sectionId];
     }
 
+    getInputPlaceholder(): string {
+        return this.getSection().inputPlaceholder;
+    }
+
     markSectionAsCompleted() {
         this.isCompleted = true;
         this.output = this.getSection().output.text + "Hit Next to continue.";
@@ -96,7 +100,7 @@ export class CourseComponent implements OnInit {
                 return;
             }
 
-            // Goto 1st section of next chapter 
+            // Goto 1st section of next chapter
             newSectionId = 0;
             newChapterId = this.chapterId + 1;
         } else {

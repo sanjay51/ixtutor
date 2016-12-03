@@ -1,4 +1,7 @@
 - Update courses_authored of user when new course is created
+- Improve course.component scrolling (consistent with container if possible).
+  Footer should be at the bottom of the page, and page size should be equal to content height,
+  and there should only be one scroll bar.
 
 [COMPLETED]
 - Take care of content - footer overlap on mobile screen

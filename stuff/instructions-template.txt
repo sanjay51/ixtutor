@@ -1,0 +1,50 @@
+"Every module or class should have responsibility over a single part of the functionality provided by the software, and that responsibility should be entirely encapsulated by the class."
+
+All its services should be narrowly aligned with that responsibility. In other words,
+
+“A class should have only one reason to change.”
+
+={
+# This is how you write code snippets.
+
+class xyz {
+  function printHello() {
+    print "Hello world"
+  }
+}
+}=
+You can ''emphasize text'' by putting two
+apostrophes on each side. Three apostrophes
+will emphasize it '''strongly'''. Five
+apostrophes is '''''even stronger'''''.
+
+= Master heading =
+some text
+== Section heading ==
+
+Headings organize your writing into sections.
+The Wiki software can automatically generate
+a table of contents from them.
+
+=== Subsection ===
+
+Using more equals signs creates a subsection.
+
+==== A smaller subsection ====
+
+Don't skip levels, like from two to four equals signs.
+Start with two equals signs; don't use single equals signs.
+
+* ''Unordered lists'' are easy to do:
+** Start every line with a star.
+*** More stars indicate a deeper level.
+*A newline
+*in a list
+marks the end of the list.
+*Of course you can start again.
+
+# Numbered lists are also good:
+## Very organized
+## Easy to follow
+A newline marks the end of the list.
+#New numbering starts with 1.

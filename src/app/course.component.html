@@ -33,7 +33,7 @@
             <div class="row input">
                 <span class="label label-default">Input</span>
                 <div>
-                    <textarea [(ngModel)]="userInput" class="form-control input-textarea" placeholder="Your input here.."></textarea>
+                    <textarea [(ngModel)]="userInput" class="form-control input-textarea" [placeholder]="getInputPlaceholder()"></textarea>
                 </div>
             </div>
             <button (click)="evaluate()" class="btn btn-warning">Evaluate</button>
