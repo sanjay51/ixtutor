@@ -26,6 +26,14 @@ export class RuleEvaluatorService {
     }
 
     evaluateCondition(condition: PolicyCondition, $inputIdeal: string, $inputReal: string): boolean {
+        if (!$inputIdeal) {
+            $inputIdeal = "";
+        }
+
+        if (!$inputReal) {
+            $inputReal = "";
+        }
+
         let evalLHS: any = eval(condition.lhs);
         let evalRHS: any = eval(condition.rhs);
 

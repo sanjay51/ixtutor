@@ -47,7 +47,7 @@ export class CourseComponent implements OnInit {
 
             this.coursesService.getCourse(this.courseId)
                 .subscribe(
-                    course => this.initCourse(course)
+                course => this.initCourse(course)
                 );
         })
     }

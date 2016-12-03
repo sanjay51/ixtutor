@@ -23,6 +23,7 @@
 
 <div *ngIf="course" class="container course-container">
     <div class="row">
+        <!-- instructions box -->
         <div class="col-md-8 instruction-panel">
             <span class="label label-default">Instructions</span>
             <div>
@@ -30,6 +31,7 @@
             </div>
         </div>
         <div class="col-md-4 input-container">
+            <!-- input box -->
             <div class="row input">
                 <span class="label label-default">Input</span>
                 <div>
@@ -37,6 +39,8 @@
                 </div>
             </div>
             <button (click)="evaluate()" class="btn btn-warning">Evaluate</button>
+
+            <!-- output box -->
             <div class="row output-container">
                 <span class="label label-default">Output</span>
                 <div>
