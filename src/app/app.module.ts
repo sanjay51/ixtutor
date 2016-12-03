@@ -1,3 +1,4 @@
+import { UIInteractionService } from './shared/ui-interaction.service';
 import { InstructionsEditorWidgetComponent } from './editor/instructions-editor-widget/instructions-editor-widget.component';
 import { EditorHelperService } from './editor/editor-helper.service';
 import { NgModule } from '@angular/core';
@@ -67,7 +68,8 @@ import { EditorOptionsComponent } from './editor/editor-options/editor-options.c
     providers: [CoursesService, RuleEvaluatorService,
         AuthenticationService, StorageService, LoginGuard,
         SignupGuard, ValidatorService, Utils, LogService,
-        ImageHelperService, MarkupHelperService, EditorHelperService]
+        ImageHelperService, MarkupHelperService, EditorHelperService,
+        UIInteractionService]
 })
 
 export class AppModule { }

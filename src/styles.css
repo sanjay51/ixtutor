@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 .body-custom {
-    background-color:#F1F1F1;
+    background-color:#F5F5F5;
+}
+
+.codex {
+    background-color: white;
+    border: none;
+    font-family: Courier New, Courier, monospace;
+    font-weight: 400;
 }

@@ -33,7 +33,7 @@ export class MarkupHelperService {
 
     replaceCode(markupText: string): string {
         return markupText
-            .replace(/\n={\n/g, "<br/><pre class=\"code\">")
+            .replace(/\n={\n/g, "<br/><pre class=\"codex\">")
             .replace(/\n}=\n/g, "</pre><br/>");
     }
 

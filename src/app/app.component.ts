@@ -1,3 +1,4 @@
+import { UIInteractionService } from './shared/ui-interaction.service';
 import { FooterComponent } from './footer/footer.component';
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
@@ -9,6 +10,10 @@ import { HeaderComponent } from './header/header.component';
 })
 
 export class AppComponent implements OnInit {
-    constructor() { }
-    ngOnInit() { }
+    constructor(private uiInteractionService: UIInteractionService) { }
+    ngOnInit() {}
+
+    isFooterVisible(): boolean {
+        return this.uiInteractionService.isFooterVisible();
+    }
 }

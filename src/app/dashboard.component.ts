@@ -15,7 +15,7 @@ import { Course } from './course';
 export class DashboardComponent implements OnInit {
     courses: Course[] = [];
 
-    constructor(private router: Router, private coursesService: CoursesService, 
+    constructor(private router: Router, private coursesService: CoursesService,
         private authenticationService: AuthenticationService,
         private imageHelperService: ImageHelperService) { }
 

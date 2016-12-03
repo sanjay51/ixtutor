@@ -4,9 +4,8 @@
 }
 
 .instruction-panel {
-    background-color: black;
-    color: white;
     min-height: 100%;
+    border: none;
 }
 
 .course-container {
@@ -16,9 +15,9 @@
 
 .instructions {
     min-height: 100%;
-    background-color: darkslategrey;
-    color: white;
+    color: black;
     white-space: pre-wrap;
+    border: none;
 }
 
 .input {
@@ -31,24 +30,25 @@
     background-color: white;
     margin:2%;
     color: black;
-    box-shadow: 0px 0px 1px #000;
+    border: none;
 }
 
 .input-container {
      color: white;
-     background-color: #EBF0F3;
+     background-color: #e8e5e5;
      min-height: 50%;
+     box-shadow: 0px 0px 3px gray;
 }
 
 .output-container {
-     background-color: #e1e5e8;
+     background-color: #e8e5e5;
      color: black;
      min-height:50%;
 }
 
 .output-pre {
      padding: 10px;
-     background-color: #e1e5e8;
+     background-color: #e8e5e5;
      border: none;
      white-space: pre-wrap;
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { UIInteractionService } from './shared/ui-interaction.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Course, Section, Policy, Chapter } from './course';
@@ -11,7 +12,7 @@ import { MarkupHelperService } from './shared/markup-helper.service';
     templateUrl: './course.component.html',
     styleUrls: ['./course.component.css']
 })
-export class CourseComponent implements OnInit {
+export class CourseComponent implements OnInit, OnDestroy {
     courseId: string;
     chapterId: number;
     sectionId: number;
@@ -27,9 +28,11 @@ export class CourseComponent implements OnInit {
 
     constructor(private route: ActivatedRoute, private ruleEvaluatorService: RuleEvaluatorService,
         private coursesService: CoursesService, private router: Router,
-        private markupHelperService: MarkupHelperService) { }
+        private markupHelperService: MarkupHelperService,
+        private uiInteractionService: UIInteractionService) { }
 
     ngOnInit(): void {
+        this.uiInteractionService.hideFooter();
         this.route.params.forEach((params: Params) => {
             this.courseId = params['id'];
             this.chapterId = +params['chapter'];
@@ -50,6 +53,10 @@ export class CourseComponent implements OnInit {
                 course => this.initCourse(course)
                 );
         })
+    }
+
+    ngOnDestroy(): void {
+        this.uiInteractionService.unhideFooter();
     }
 
     initCourse(course: Course) {
