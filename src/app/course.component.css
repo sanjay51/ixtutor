@@ -1,6 +1,7 @@
 .secondary-header {
-    background-color: #30363E;
+    background-color: #F5F5F5;
     color: white;
+    box-shadow: 0px 0px 3px gray;
 }
 
 .instruction-panel {
@@ -11,13 +12,16 @@
 .course-container {
     width: 100%;
     min-height: 100%;
+    background-color: white;
 }
 
 .instructions {
     min-height: 100%;
     color: black;
     white-space: pre-wrap;
+    background-color: white;
     border: none;
+    margin: 30px;
 }
 
 .input {
@@ -35,42 +39,37 @@
 
 .input-container {
      color: white;
-     background-color: #e8e5e5;
+     background-color: #F5F5F5;
      min-height: 50%;
      box-shadow: 0px 0px 3px gray;
 }
 
 .output-container {
-     background-color: #e8e5e5;
+     background-color: #F5F5F5;
      color: black;
      min-height:50%;
 }
 
 .output-pre {
      padding: 10px;
-     background-color: #e8e5e5;
      border: none;
      white-space: pre-wrap;
 }
 
 .btn-custom {
-  background-color: hsl(149, 14%, 5%) !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#628272", endColorstr="#0a0e0c");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#628272), to(#0a0e0c));
-  background-image: -moz-linear-gradient(top, #628272, #0a0e0c);
-  background-image: -ms-linear-gradient(top, #628272, #0a0e0c);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #628272), color-stop(100%, #0a0e0c));
-  background-image: -webkit-linear-gradient(top, #628272, #0a0e0c);
-  background-image: -o-linear-gradient(top, #628272, #0a0e0c);
-  background-image: linear-gradient(#628272, #0a0e0c);
-  border-color: #0a0e0c #0a0e0c hsl(149, 14%, -5%);
-  color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.66);
-  -webkit-font-smoothing: antialiased;
-  margin: 1%;
+    background: transparent;
+    color: gray;
+}
+
+.btn-custom:hover {
+    background: #efeded;
+    color: black;
 }
 
 .dropdown-item-text {
-    color: white;
+    color: black;
+}
+
+.dropdown-menu {
+    background-color: #efeded;
 }

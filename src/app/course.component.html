@@ -5,7 +5,7 @@
         <button id="course-dropdown-button" type="button" class="btn btn-custom" dropdownToggle [disabled]="disabled">
             <strong>Chapter |</strong> {{chapter.meta.title}} <span class="caret"></span>
         </button>
-        <ul style="background-color: #2F4F4F" dropdownMenu role="menu" aria-labelledby="course-dropdown-button">
+        <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="course-dropdown-button">
             <li *ngFor="let chapter of course.chapters" role="menuitem"><a (click)="loadChapter(chapter)" class="dropdown-item dropdown-item-text">{{chapter.meta.title}}</a></li>
         </ul>
     </div>
@@ -15,7 +15,7 @@
         <button id="section-dropdown-button" type="button" class="btn btn-custom" dropdownToggle [disabled]="disabled">
             <strong>Section |</strong> {{section.title}} <span class="caret"></span>
         </button>
-        <ul style="background-color: #2F4F4F" dropdownMenu role="menu" aria-labelledby="section-dropdown-button">
+        <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="section-dropdown-button">
             <li *ngFor="let section of chapter.sections" role="menuitem"><a (click)="loadSection(section)" class="dropdown-item dropdown-item-text">{{section.title}}</a></li>
         </ul>
     </div>
