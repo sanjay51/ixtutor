@@ -15,15 +15,6 @@
     background-color: white;
 }
 
-.instructions {
-    min-height: 100%;
-    color: black;
-    white-space: pre-wrap;
-    background-color: white;
-    border: none;
-    margin: 30px;
-}
-
 .input {
     height:50%;
 }

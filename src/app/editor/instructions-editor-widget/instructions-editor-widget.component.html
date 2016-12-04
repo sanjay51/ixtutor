@@ -1,6 +1,6 @@
 <!-- Modal -->
-<div *ngIf="isVisible" class="modal fade show in danger" style="height:100%" id="myModal" role="dialog">
-  <div class="modal-dialog" style="width:80%; height:100%;">
+<div *ngIf="isVisible" class="modal fade show in danger instructions-editor" style="min-height:100%" id="myModal" role="dialog">
+  <div class="modal-dialog" style="width:80%; min-height:100%;">
 
     <div class="modal-content">
       <div class="modal-header">
@@ -10,10 +10,10 @@
       <div class="modal-body">
         <div class="row">
           <div *ngIf="instructions" class="col-md-6">
-            <textarea style="height:100%; overflow-y:auto" [(ngModel)]="instructions.text" class="form-control" name="instructionText"></textarea>
+            <textarea autosize class="form-control instructions-editor-text" [(ngModel)]="instructions.text" name="instructionText"></textarea>
           </div>
           <div class="col-md-6">
-            <pre class="instructions" style="overflow-y:auto" *ngIf="instructions" [innerHTML]="getCompiledInstructions()"></pre>
+            <pre class="instructions instructions-override" style="overflow-y:auto" *ngIf="instructions" [innerHTML]="getCompiledInstructions()"></pre>
           </div>
         </div>
       </div>

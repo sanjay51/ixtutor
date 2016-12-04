@@ -1,6 +1,12 @@
-.instructions {
-    height: 100%;
-    background-color: darkslategrey;
-    color: white;
-    white-space: pre-wrap;
+.instructions-override {
+    margin: 0px;
+}
+
+.instructions-editor {
+    overflow-y: scroll;
+}
+
+.instructions-editor-text {
+     min-height:100%;
+     overflow-y:auto;
 }

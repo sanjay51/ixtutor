@@ -10,3 +10,12 @@
     font-family: Courier New, Courier, monospace;
     font-weight: 400;
 }
+
+.instructions {
+    min-height: 100%;
+    color: black;
+    white-space: pre-wrap;
+    background-color: white;
+    border: none;
+    margin: 30px;
+}
