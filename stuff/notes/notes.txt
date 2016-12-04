@@ -1,7 +1,21 @@
+- (Important) Implement course backup feature
+- Fix output on course component
+- Remove editor right-pane scrollbar
 - Update courses_authored of user when new course is created
-- Improve course.component scrolling (consistent with container if possible).
-  Footer should be at the bottom of the page, and page size should be equal to content height,
-  and there should only be one scroll bar.
+- Improve main header design - move some buttons on left side
+- Implement "Submit a feature request" feature
+- Improve footer
+- Improve course preview UI
+- Make Input/Output pane moving with scroll on course component UI
+- Improve security - Validate and use JWT (JSON web token) for every put request
+- Create course completed page.
+- Improve profile view, with a list of enrolled courses.
+- Improve section, chapter, policy, condition -- re-arrange, deletion
+- Implement "Show Diff" feature in editor
+- Onboard to angular material
 
 [COMPLETED]
 - Take care of content - footer overlap on mobile screen
+- Improve course.component scrolling (consistent with container if possible).
+  Footer should be at the bottom of the page, and page size should be equal to content height,
+  and there should only be one scroll bar.
