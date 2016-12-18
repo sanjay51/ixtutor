@@ -15,12 +15,16 @@ export class AuthenticationService {
         let email: string = authenticationState.email;
         let password: string = authenticationState.password;
 
-		let observable = this.storageService.login(email, password);
+        let observable = this.storageService.login(email, password);
 
         observable.subscribe(response => {
-            let authState = { id: response.id, email: response.email, password: response.password, isLoggedIn: true };
-            localStorage.setItem(AUTH_STATE, JSON.stringify(authState));
-            localStorage.setItem(USER_PROFILE, response.data)
+            if (response == "false") {
+                //show error
+            } else {
+                let authState = { id: response.id, email: response.email, password: response.password, isLoggedIn: true };
+                localStorage.setItem(AUTH_STATE, JSON.stringify(authState));
+                localStorage.setItem(USER_PROFILE, response.data)
+            }
         });
 
         return observable;
@@ -56,10 +60,10 @@ export class AuthenticationService {
 
     getUserProfile(email: string): Observable<User> {
         // TODO: Don't fetch password
-		let observable = this.storageService.getUserByEmail(email)
-			.map(this.mapResponseAsUserObject);
+        let observable = this.storageService.getUserByEmail(email)
+            .map(this.mapResponseAsUserObject);
 
-		return observable;
+        return observable;
     }
 
     getUserProfileFromCache(): User {
@@ -69,13 +73,13 @@ export class AuthenticationService {
         return new User(authState.id, authState.email).withUserData(new UserData(JSON.parse(profile)));
     }
 
-	mapResponseAsUserObject(rawUser: any): User {
-		let user: User = User.newInstanceFromRawData(rawUser.id, rawUser.email, JSON.parse(rawUser.data));
-		return user;
-	}
+    mapResponseAsUserObject(rawUser: any): User {
+        let user: User = User.newInstanceFromRawData(rawUser.id, rawUser.email, JSON.parse(rawUser.data));
+        return user;
+    }
 
     isCourseEditor(course: Course): boolean {
-        if (! this.isLoggedIn()) {
+        if (!this.isLoggedIn()) {
             return false;
         }
 
@@ -128,10 +132,10 @@ export class User {
         this.email = email;
     }
 
-    static newInstanceFromRawData(id: string, email: string, rawUserData: any) : User {
+    static newInstanceFromRawData(id: string, email: string, rawUserData: any): User {
         return new User(id, email)
-                    .withPassword(rawUserData.password)
-                    .withUserData(new UserData(rawUserData));
+            .withPassword(rawUserData.password)
+            .withUserData(new UserData(rawUserData));
     }
 
     withPassword(password: string): User {

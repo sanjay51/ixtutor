@@ -11,7 +11,7 @@ import { HeaderComponent } from './header/header.component';
 
 export class AppComponent implements OnInit {
     constructor(private uiInteractionService: UIInteractionService) { }
-    ngOnInit() {}
+    ngOnInit() { }
 
     isFooterVisible(): boolean {
         return this.uiInteractionService.isFooterVisible();

@@ -1,4 +1,6 @@
 - (Important) Implement course backup feature
+- Login page - show proper error on login failure
+- Lambda - Use POST instead of GET for update requests
 - Fix output on course component
 - Remove editor right-pane scrollbar
 - Update courses_authored of user when new course is created

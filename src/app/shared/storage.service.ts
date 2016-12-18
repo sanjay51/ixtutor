@@ -9,6 +9,7 @@ import { LogService } from './log.service';
 @Injectable()
 export class StorageService {
     URL: string = "https://gztyqbl4h1.execute-api.us-east-1.amazonaws.com/prod";
+    URL_new: string = "https://kyamp327d4.execute-api.us-east-1.amazonaws.com/prod/ixtutor";
     LOG_TAG: string = "StorageService: ";
     constructor(private http: Http, private Log: LogService) { }
 
@@ -36,15 +37,22 @@ export class StorageService {
 
     private getCourseById(courseId: string): Observable<any> {
         this.Log.debug(this.LOG_TAG, "remoteCall=1,api=getCourseById,courseId=" + courseId);
-        let url: string = this.URL + '/getCourse' + '?courseId=' + courseId + '&operation=getCourseById';
+        let url: string = this.URL_new + "?api=getCourseByID&courseId=" + courseId;
         return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
+    private getAllCoursesMetadata(): Observable<any> {
+        let url: string = this.URL_new + "?api=getAllCoursesMetadata";
+        return this.http.get(url)
+            .map(this.extractAllData)
+            .catch(this.handleError);
+    }
+
     public getUserByEmail(email: string): Observable<any> {
         this.Log.debug(this.LOG_TAG, "remoteCall=1,api=getUserByEmail,email=" + email);
-        let url: string = this.URL + '/user' + '?userEmail=' + email + '&operation=getUserByEmail';
+        let url: string = this.URL_new + '?email=' + email + '&api=getUserByEmail';
         return this.http.get(url)
             .map(this.extractData)
             .catch(this.handleError);
@@ -52,16 +60,9 @@ export class StorageService {
 
     public login(email: string, password: string): Observable<any> {
         this.Log.debug(this.LOG_TAG, "remoteCall=1,api=login,email=" + email);
-        let url: string = this.URL + '/user' + '?email=' + email + '&password=' + password + '&operation=login';
+        let url: string = this.URL_new + '?email=' + email + '&password=' + password + '&api=login';
         return this.http.get(url)
             .map(this.extractData)
-            .catch(this.handleError);
-    }
-
-    private getAllCoursesMetadata(): Observable<any> {
-        let url: string = this.URL + '/getCourse' + '?operation=getAllCoursesMetadata';
-        return this.http.get(url)
-            .map(this.extractAllData)
             .catch(this.handleError);
     }
 
@@ -106,11 +107,11 @@ export class StorageService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body.Item || {};
+        return body.response || {};
     }
 
     private extractAllData(res: Response) {
-        return res.json().Items || {};
+        return res.json().response || {};
     }
 
     private handleError(error: any) {
