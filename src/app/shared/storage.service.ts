@@ -67,7 +67,7 @@ export class StorageService {
     }
 
     public signupUser(signupState: SignupState): Observable<any> {
-        let url: string = this.URL + '/user' + '?operation=signup' +
+        let url: string = this.URL_new + '?api=signup' +
             '&email=' + signupState.email + '&password=' + signupState.password +
             '&name=' + encodeURIComponent(signupState.name);
         this.Log.debug(this.LOG_TAG, "signupURL=" + url);
