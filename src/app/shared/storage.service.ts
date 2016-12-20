@@ -75,7 +75,7 @@ export class StorageService {
     }
 
     public createCourse(courseMeta: Meta): Observable<any> {
-        let url = this.URL + '/getCourse' + '?operation=createCourse' +
+        let url = this.URL_new + '?api=createCourse' +
             '&category=' + courseMeta.category + '&title=' + encodeURIComponent(courseMeta.title) +
             '&oneLineDescription=' + encodeURIComponent(courseMeta.oneLineDescription) +
             '&author=' + courseMeta.author +
