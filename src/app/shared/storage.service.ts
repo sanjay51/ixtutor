@@ -85,7 +85,7 @@ export class StorageService {
     }
 
     private updateCourseMetadata(courseId: string, metadata: string): Observable<any> {
-        let url: string = this.URL + '/getCourse' + '?operation=updateCourseMetadata' +
+        let url: string = this.URL_new + '?api=updateCourseMetadata' +
             '&courseId=' + courseId + '&metadata=' + encodeURIComponent(metadata);
         console.log(url);
 
@@ -95,8 +95,8 @@ export class StorageService {
     }
 
     private updateCourseChapters(courseId: string, chapters: string): Observable<any> {
-        let url: string = this.URL + '/getCourse' + '?operation=updateCourseChapters' +
-            '&courseId=' + courseId + '&chapters=' + encodeURIComponent(chapters);
+        let url: string = this.URL_new + '?api=updateCoursePayload' +
+            '&courseId=' + courseId + '&payload=' + encodeURIComponent(chapters);
         console.log(url);
 
         let observable = this.http.get(url);
