@@ -1,3 +1,4 @@
+import { FeedbackComponent } from './feedback/feedback.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ModuleWithProviders } from '@angular/core';
@@ -60,6 +61,10 @@ const appRoutes: Routes = [
         path: 'signup',
         component: SignupComponent,
         canActivate: [SignupGuard]
+    },
+    {
+        path: 'feedback',
+        component: FeedbackComponent
     }
 ];
 

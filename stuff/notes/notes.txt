@@ -1,4 +1,5 @@
-- (Important) Implement course backup feature
+- Implement "Submit a feature request" feature
+- Show course history on editor UI, with rollback support
 - Login page - show proper error on login failure
 - Create Course - Fix redirection after creation
 - Lambda - Use POST instead of GET for update requests
@@ -6,7 +7,6 @@
 - Remove editor right-pane scrollbar
 - Update courses_authored of user when new course is created
 - Improve main header design - move some buttons on left side
-- Implement "Submit a feature request" feature
 - Improve footer
 - Improve course preview UI
 - Make Input/Output pane moving with scroll on course component UI
@@ -16,9 +16,11 @@
 - Improve section, chapter, policy, condition -- re-arrange, deletion
 - Implement "Show Diff" feature in editor
 - Onboard to angular material
+- Fix/enable aws lambda logging (cloudwatch)
 
 [COMPLETED]
 - Take care of content - footer overlap on mobile screen
 - Improve course.component scrolling (consistent with container if possible).
   Footer should be at the bottom of the page, and page size should be equal to content height,
   and there should only be one scroll bar.
+- (Important) Implement course backup feature

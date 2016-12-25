@@ -37,6 +37,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditorOptionsComponent } from './editor/editor-options/editor-options.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
     imports: [
@@ -64,7 +65,8 @@ import { EditorOptionsComponent } from './editor/editor-options/editor-options.c
         FooterComponent,
         EditorOptionsComponent,
         InstructionsEditorWidgetComponent,
-        Autosize
+        Autosize,
+        FeedbackComponent
     ],
     bootstrap: [AppComponent],
     providers: [CoursesService, RuleEvaluatorService,

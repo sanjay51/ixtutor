@@ -1,7 +1,7 @@
 import { Meta } from './../course';
 import { SignupState } from './../signup/signup.component';
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import './rxjs-operators';
 import { Observable } from 'rxjs/Observable';
 import { LogService } from './log.service';
@@ -100,6 +100,20 @@ export class StorageService {
         console.log(url);
 
         let observable = this.http.get(url);
+        observable.subscribe(x => console.log(x));
+
+        return observable;
+    }
+
+    public submitFeedback(category: string, details: string): Observable<any> {
+        let body = { 'details': details };
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        let url: string = this.URL_new + '?api=submitFeedback&category=' + category;
+        console.log(url);
+
+        let observable = this.http.post(url, body, options);
         observable.subscribe(x => console.log(x));
 
         return observable;
