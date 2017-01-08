@@ -1,3 +1,4 @@
+import { AuthenticationService } from './authentication.service';
 import { Injectable } from '@angular/core';
 import { Course, Meta } from '../course';
 import { Utils, COURSE_ID } from './utils.service';
@@ -13,7 +14,8 @@ export class CoursesService {
 	haskellCourse: any;
 	LOG_TAG: string = "CoursesService: ";
 
-	constructor(private storageService: StorageService, private utils: Utils, private Log: LogService) { }
+	constructor(private storageService: StorageService, private utils: Utils, private Log: LogService,
+		private authenticationService: AuthenticationService) { }
 
 	getAllCoursesMetadata(): Observable<Course[]> {
 		let courseMetadataFromCache = this.COURSES_METADATA;
@@ -26,7 +28,7 @@ export class CoursesService {
 		}
 		this.Log.debug(this.LOG_TAG, "CacheHit=0,method=getAllCoursesMetadata");
 
-		let observable = this.storageService.get(API.getAllCoursesMetadata, {})
+		let observable = this.storageService.get(API.getAllCoursesMetadata, {}, this.authenticationService.getIdentityToken())
 			.map(this.mapResponseAsCoursesMetadataArray);
 
 		observable.subscribe(courses => {
@@ -62,7 +64,7 @@ export class CoursesService {
 
 		let params = {};
 		params[COURSE_ID] = id;
-		let observable = this.storageService.get(API.getCourseById, params)
+		let observable = this.storageService.get(API.getCourseById, params, this.authenticationService.getIdentityToken())
 			.map(this.mapResponseAsCourseObject);
 
 		observable.subscribe(course => this.putInCache(course));
@@ -93,13 +95,13 @@ export class CoursesService {
 	saveCourseChapters(course: Course): Observable<any> {
 		let chapters = JSON.stringify(course.chapters, null, 0);
 		let params = { 'courseId': course.id, 'chapters': chapters }
-		return this.storageService.get(API.updateCourseChapters, params)
+		return this.storageService.get(API.updateCourseChapters, params, this.authenticationService.getIdentityToken())
 	}
 
 	saveCourse(course: Course): Observable<any> {
 		let courseMeta = JSON.stringify(course.meta, null, 0);
 		let params = { 'courseId': course.id, 'metadata': courseMeta }
-		return this.storageService.get(API.updateCourseMetadata, params)
+		return this.storageService.get(API.updateCourseMetadata, params, this.authenticationService.getIdentityToken())
 	}
 
 	invalidateCache() {

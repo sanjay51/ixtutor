@@ -69,8 +69,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
         FeedbackComponent
     ],
     bootstrap: [AppComponent],
-    providers: [CoursesService, RuleEvaluatorService,
-        AuthenticationService, StorageService, LoginGuard,
+    providers: [AuthenticationService, CoursesService, RuleEvaluatorService,
+        StorageService, LoginGuard,
         SignupGuard, ValidatorService, Utils, LogService,
         ImageHelperService, MarkupHelperService, EditorHelperService,
         UIInteractionService]

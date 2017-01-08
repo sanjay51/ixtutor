@@ -22,16 +22,16 @@ export class StorageService {
         return Promise.resolve(localStorage.setItem(key, value));
     }
 
-    get(request: API, params: any): Observable<any> {
+    get(request: API, params: any, identityToken: string): Observable<any> {
         switch (request) {
             case API.getCourseById:
                 return this.getCourseById(params.courseId);
             case API.getAllCoursesMetadata:
                 return this.getAllCoursesMetadata();
             case API.updateCourseMetadata:
-                return this.updateCourseMetadata(params.courseId, params.metadata);
+                return this.updateCourseMetadata(params.courseId, params.metadata, identityToken);
             case API.updateCourseChapters:
-                return this.updateCourseChapters(params.courseId, params.chapters);
+                return this.updateCourseChapters(params.courseId, params.chapters, identityToken);
         }
     }
 
@@ -85,9 +85,10 @@ export class StorageService {
         return this.http.get(url);
     }
 
-    private updateCourseMetadata(courseId: string, metadata: string): Observable<any> {
+    private updateCourseMetadata(courseId: string, metadata: string, identityToken: string): Observable<any> {
         let url: string = this.URL_new + '?api=updateCourseMetadata' +
-            '&courseId=' + courseId + '&metadata=' + encodeURIComponent(metadata);
+            '&courseId=' + courseId + '&metadata=' + encodeURIComponent(metadata) +
+            '&token=' + encodeURIComponent(identityToken);
         console.log(url);
 
         let observable = this.http.get(url);
@@ -95,9 +96,10 @@ export class StorageService {
         return observable;
     }
 
-    private updateCourseChapters(courseId: string, chapters: string): Observable<any> {
+    private updateCourseChapters(courseId: string, chapters: string, identityToken: string): Observable<any> {
         let url: string = this.URL_new + '?api=updateCoursePayload' +
-            '&courseId=' + courseId + '&payload=' + encodeURIComponent(chapters);
+            '&courseId=' + courseId + '&payload=' + encodeURIComponent(chapters) +
+            '&token=' + encodeURIComponent(identityToken);
         console.log(url);
 
         let observable = this.http.get(url);
