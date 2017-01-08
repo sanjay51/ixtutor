@@ -1,4 +1,3 @@
-- Implement "Submit a feature request" feature
 - Show course history on editor UI, with rollback support
 - Login page - show proper error on login failure
 - Create Course - Fix redirection after creation
@@ -17,6 +16,8 @@
 - Implement "Show Diff" feature in editor
 - Onboard to angular material
 - Fix/enable aws lambda logging (cloudwatch)
+- Improve "Write to us" exception handling from server
+- Improve Forms UI everywhere.
 
 [COMPLETED]
 - Take care of content - footer overlap on mobile screen
@@ -24,3 +25,4 @@
   Footer should be at the bottom of the page, and page size should be equal to content height,
   and there should only be one scroll bar.
 - (Important) Implement course backup feature
+- Implement "Submit a feature request" feature

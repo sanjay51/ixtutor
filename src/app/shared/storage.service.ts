@@ -74,12 +74,13 @@ export class StorageService {
         return this.http.get(url);
     }
 
-    public createCourse(courseMeta: Meta): Observable<any> {
+    public createCourse(courseMeta: Meta, identityToken: string): Observable<any> {
         let url = this.URL_new + '?api=createCourse' +
             '&category=' + courseMeta.category + '&title=' + encodeURIComponent(courseMeta.title) +
             '&oneLineDescription=' + encodeURIComponent(courseMeta.oneLineDescription) +
             '&author=' + courseMeta.author +
-            '&description=' + encodeURIComponent(courseMeta.description);
+            '&description=' + encodeURIComponent(courseMeta.description) +
+            '&token=' + encodeURIComponent(identityToken);
         this.Log.debug(this.LOG_TAG, "createCourseURL=" + url);
         return this.http.get(url);
     }

@@ -69,8 +69,8 @@ export class CoursesService {
 		return observable;
 	}
 
-	createCourse(courseMeta: Meta): Observable<any> {
-		return this.storageService.createCourse(courseMeta);
+	createCourse(courseMeta: Meta, identityToken: string): Observable<any> {
+		return this.storageService.createCourse(courseMeta, identityToken);
 	}
 
 	mapResponseAsCourseObject(data: any): Course {

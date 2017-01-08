@@ -38,9 +38,10 @@ export class NewCourseComponent implements OnInit {
       return;
     }
 
-    let createCoursePromise = this.coursesService.createCourse(this.courseMeta).toPromise();
+    let createCoursePromise = this.coursesService.createCourse(this.courseMeta, this.authenticationService.getIdentityToken()).toPromise();
 
     createCoursePromise.then(response => {
+      console.log(response);
       this.isCourseCreationComplete = true;
       this.gotoCourseEditor(response.json().courseId);
     }).catch(error => {

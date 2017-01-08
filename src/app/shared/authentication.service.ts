@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 const AUTH_STATE: string = "AUTH_STATE";
 const USER_PROFILE: string = "USER_PROFILE";
+const IDENTITY_TOKEN: string = "IDENTITY_TOKEN";
 
 @Injectable()
 export class AuthenticationService {
@@ -18,12 +19,14 @@ export class AuthenticationService {
         let observable = this.storageService.login(email, password);
 
         observable.subscribe(response => {
+            console.log(response);
             if (response == "false") {
                 //show error
             } else {
                 let authState = { id: response.id, email: response.email, password: response.password, isLoggedIn: true };
                 localStorage.setItem(AUTH_STATE, JSON.stringify(authState));
-                localStorage.setItem(USER_PROFILE, response.data)
+                localStorage.setItem(USER_PROFILE, response.data);
+                localStorage.setItem(IDENTITY_TOKEN, response.token);
             }
         });
 
@@ -56,6 +59,10 @@ export class AuthenticationService {
 
     getAuthState(): any {
         return JSON.parse(localStorage.getItem(AUTH_STATE));
+    }
+
+    getIdentityToken(): string {
+        return localStorage.getItem(IDENTITY_TOKEN);
     }
 
     getUserProfile(email: string): Observable<User> {
